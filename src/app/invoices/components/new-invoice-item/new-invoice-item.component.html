@@ -1,0 +1,35 @@
+<div class="item-card">
+  <form [formGroup]="itemForm" (ngSubmit)="onItemFormSubmit()">
+    <h3>item {{item.id}}</h3>
+    <div class="form-group">
+      <label for="nom">Nom</label>
+      <input type="text" formControlName="nom">
+    </div>
+    <div class="form-group">
+      <label for="quantite">Quantite</label>
+      <input type="text" formControlName="quantite">
+    </div>
+    <div class="form-group">
+      <label for="prix">Prix</label>
+      <input type="text" formControlName="prix">
+      <!-- <p>{{  | currency: 'EUR':'code' }}</p> -->
+    </div>
+    <div class="form-group">
+      <label for="TVA">TVA</label>
+      <input type="text" formControlName="TVA">
+    </div>
+    <div class="form-group">
+      <label for="pays">Montant TVA</label>
+      <input type="text" formControlName="mntTVA">
+      <!-- <p>{{  | currency: 'EUR':'code' }}</p> -->
+    </div>
+    <div class="form-group">
+      <label for="total">Total</label>
+      <input type="text" formControlName="total">
+      <!-- <p>{{  | currency: 'EUR':'code' }}</p> -->
+    </div>
+  </form>
+  <div class="delete-button">
+    <button (click)="onDeleteItem()">x</button>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="invoice-card">
+  <h1>Nouvelle facture</h1>
+  <h2>Clients</h2>
+  <form [formGroup]="clientForm">
+    <div class="form-group">
+      <label for="nomClient">Nom Client</label>
+      <input type="text" formControlName="nomClient" />
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" formControlName="emailClient" />
+    </div>
+    <div class="form-group">
+      <label for="adresse">Adresse</label>
+      <input type="text" formControlName="adresseClient" />
+    </div>
+    <div class="form-group">
+      <label for="codePostal">Code Postal</label>
+      <input type="text" formControlName="cpClient" />
+    </div>
+    <div class="form-group">
+      <label for="ville">Ville</label>
+      <input type="text" formControlName="villeClient" />
+    </div>
+    <div class="form-group">
+      <label for="pays">Pays</label>
+      <input type="text" formControlName="paysClient" />
+    </div>
+    <div class="form-group">
+      <label for="siren_siret">SIREN/SIRET</label>
+      <input type="text" formControlName="siren_siretClient" />
+    </div>
+  </form>
+  <form [formGroup]="detailsForm">
+    <div class="form-group">
+      <label for="dateEcheance">Date Echéance</label>
+      <input type="date" formControlName="dateEcheance" />
+    </div>
+    <div class="form-group">
+      <label for="dateEmission">Date Emission</label>
+      <input type="date" formControlName="dateEmission" />
+    </div>
+  </form>
+  <h2>Items</h2>
+  <app-new-invoice-item
+    *ngFor="let itemElement of invoiceItems; let i = index"
+    [item]="itemElement"
+    (itemSaveEvent)="saveItemData($event, i)"
+    (itemDeleteEvent)="onDeleteItemForm($event)"
+  ></app-new-invoice-item>
+  <div class="button-group">
+    <div class="form-group">
+      <button (click)="onAddItem()">Ajouter Item</button>
+    </div>
+    <div class="form-group">
+      <button type="submit" (click)="onInvoiceFormSubmit()">Enregistrer</button>
+    </div>
+  </div>
+</div>

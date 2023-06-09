@@ -1,0 +1,41 @@
+<header>
+  <div class="header">
+    <h1>MATT PLOMBERIE</h1>
+    <nav class="nav">
+      <div class="menu">
+        <ul>
+          <li>
+            <a
+              routerLink=""
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              >Accueil</a
+            >
+          </li>
+          <li>
+            <a routerLink="invoices">Facture</a>
+            <ul>
+              <li>
+                <a routerLink="invoices/create">Créer</a>
+              </li>
+              <li>
+                <a routerLink="invoices/search">Rechercher</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a routerLink="clients">Clients</a>
+            <ul>
+              <li>
+                <a routerLink="clients/create">Créer</a>
+              </li>
+              <li>
+                <a routerLink="clients/search">Rechercher</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
