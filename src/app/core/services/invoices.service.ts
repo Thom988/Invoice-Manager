@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Client } from '../models/client.model';
 import { InvoiceItem } from '../models/invoice-item.model';
 import { Invoice } from '../models/invoice.model';
 
@@ -10,7 +9,15 @@ export class InvoicesService {
   invoices: Invoice[] = [];
 
   addNewInvoice(
-    client: Client,
+    clientForm: {
+      nomClient: string;
+      emailClient: string;
+      adresseClient: string;
+      cpClient: number;
+      villeClient: string;
+      paysClient: string;
+      siren_siretClient: string;
+    },
     detailsForm: {
       dateEmission: Date;
       dateEcheance: Date;
@@ -20,17 +27,25 @@ export class InvoicesService {
     invoiceItems: InvoiceItem[]
   ): void {
     const numRM = 'FR0044347940244';
-    let invoice: Invoice = new Invoice()
+    let invoice: Invoice = new Invoice();
     invoice = {
       numero: this.getNewInvoiceNumber(),
-      numRM : numRM,
-      client: client,
+      numRM: numRM,
+      client: {
+        nom: clientForm.nomClient,
+        email: clientForm.emailClient,
+        adresse: clientForm.adresseClient,
+        codePostal: clientForm.cpClient,
+        ville: clientForm.villeClient,
+        pays: clientForm.paysClient,
+        siren_siret: clientForm.siren_siretClient,
+      },
+      invoiceItems: invoiceItems,
       dateEmission: detailsForm.dateEmission,
       dateEcheance: detailsForm.dateEcheance,
       totalHT: detailsForm.totalHT,
       totalMntTVA: detailsForm.totalMntTVA,
-      invoiceItems: invoiceItems,
-      id: this.getNewInvoiceId()
+      id: this.getNewInvoiceId(),
     };
     this.invoices.push(invoice);
     console.log(this.invoices);
@@ -45,25 +60,75 @@ export class InvoicesService {
     return invoice || null;
   }
 
-  getNewInvoiceId(): number{
+  getNewInvoiceId(): number {
     let invoiceId = this.invoices.length + 1;
-    return (invoiceId)
+    return invoiceId;
   }
 
   getNewInvoiceNumber(): string {
-    const currentDate = this.getFormatedCurrentDate();
-    let monthInvoices = this.invoices.filter(inv => inv.numero.substring(0,7) === currentDate); 
-    let nextMonthId = monthInvoices.length + 1;
-    let invNumber: string = '000' + nextMonthId;
-    invNumber = invNumber.substring(-4);
-    return(`${currentDate}-${invNumber}`);
+    let currentDate: string = this.getFormatedCurrentDate();
+    let monthInvoices: Invoice[] = this.invoices.filter(
+      (inv) => inv.numero.substring(0, 6) === currentDate
+    );
+    let nextMonthId: number = monthInvoices.length + 1;
+    let invNumber: string = '00' + nextMonthId;
+    invNumber = invNumber.slice(-3);
+    return currentDate + '-' + invNumber;
   }
 
   getFormatedCurrentDate(): string {
     let currentDate = new Date();
     let year = currentDate.getFullYear().toString();
     let month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
-    return(year + month);
+    return year + month;
   }
 
+  searchInvoices(
+    isDatesVisible: boolean,
+    invoiceNumber: string,
+    clientName: string,
+    issueDateMin: Date | null,
+    issueDateMax: Date | null
+  ): Invoice[] {
+    let sortedInvoices: Invoice[];
+    if (!isDatesVisible) {
+      if (invoiceNumber === '' && clientName != '') {
+        sortedInvoices = this.invoices.filter(
+          (inv) => inv.client.nom.toUpperCase === clientName.toUpperCase
+        );
+      } else if (invoiceNumber != '' && clientName === '') {
+        sortedInvoices = this.invoices.filter(
+          (inv) => inv.numero === invoiceNumber
+        );
+      } else if (invoiceNumber != '' && clientName != '') {
+        sortedInvoices = this.invoices.filter(
+          (inv) => inv.numero === invoiceNumber && inv.client.nom === clientName
+        );
+      } else {
+        sortedInvoices = [];
+      }
+    } else {
+      if (clientName === '') {
+        sortedInvoices = this.invoices.filter(
+          (inv) =>
+            issueDateMin != null &&
+            issueDateMax != null &&
+            inv.dateEmission >= issueDateMin &&
+            inv.dateEmission <= issueDateMax
+        );
+      } else if (clientName != '') {
+        sortedInvoices = this.invoices.filter(
+          (inv) =>
+            issueDateMin != null &&
+            issueDateMax != null &&
+            inv.dateEmission >= issueDateMin &&
+            inv.dateEmission <= issueDateMax &&
+            inv.client.nom === clientName
+        );
+      } else {
+        sortedInvoices = [];
+      }
+    }
+    return sortedInvoices;
+  }
 }

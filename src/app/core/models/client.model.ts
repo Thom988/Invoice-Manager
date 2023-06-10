@@ -7,8 +7,8 @@ export class Client {
     codePostal!: number;
     ville!: string;
     pays!: string;
-    siren_siret!: number;
-    invoices!: Invoice[];
+    siren_siret!: string;
+    //invoices!: Invoice[];
 
     constructor() {
         this.nom = '';
@@ -17,7 +17,7 @@ export class Client {
         this.codePostal = 0;
         this.ville = '';
         this.pays = '';
-        this.siren_siret = 0;
-        this.invoices = [];
+        this.siren_siret = '';
+        //this.invoices = [];
     }
 }

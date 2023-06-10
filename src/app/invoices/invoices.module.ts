@@ -4,8 +4,9 @@ import { NewInvoiceComponent } from './components/new-invoice/new-invoice.compon
 import { invoicesRoutingModule } from './invoices-routing.module';
 import { SearchInvoiceComponent } from './components/search-invoice/search-invoice.component';
 import { NewInvoiceItemComponent } from './components/new-invoice-item/new-invoice-item.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InvoiceDisplayComponent } from './components/invoice-display/invoice-display.component';
+import { InvoiceListComponent } from './components/invoice-list/invoice-list.component';
 
 
 @NgModule({
@@ -13,17 +14,21 @@ import { InvoiceDisplayComponent } from './components/invoice-display/invoice-di
     NewInvoiceComponent,
     SearchInvoiceComponent,
     NewInvoiceItemComponent,
-    InvoiceDisplayComponent
+    InvoiceDisplayComponent,
+    InvoiceListComponent
   ],
   imports: [
     CommonModule,
     invoicesRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, // pour les formulaires reactifs (FormGroup, FormBuilder)
+    FormsModule // pour les formulaires simples
   ], 
   exports: [
-    SearchInvoiceComponent, 
     NewInvoiceComponent,
-    NewInvoiceItemComponent
+    SearchInvoiceComponent,
+    NewInvoiceItemComponent,
+    InvoiceDisplayComponent,
+    InvoiceListComponent
   ]
 })
 export class InvoicesModule { }
