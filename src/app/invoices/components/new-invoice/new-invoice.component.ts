@@ -12,7 +12,7 @@ import { NewInvoiceItemComponent } from '../new-invoice-item/new-invoice-item.co
 export class NewInvoiceComponent implements OnInit {
   clientForm!: FormGroup;
   detailsForm!: FormGroup;
-  invoiceItems: InvoiceItem[] = [new InvoiceItem(1)];
+  invoiceItems!: InvoiceItem[];
   @ViewChildren(NewInvoiceItemComponent)
   viewChildren!: QueryList<NewInvoiceItemComponent>;
 
@@ -22,6 +22,7 @@ export class NewInvoiceComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.invoiceItems = [new InvoiceItem(1)];
     this.detailsForm = this.formBuilder.group({
       dateEmission: [null],
       dateEcheance: [null],
@@ -35,6 +36,7 @@ export class NewInvoiceComponent implements OnInit {
       cpClient: [null],
       villeClient: [null],
       paysClient: [null],
+      telClient: [null],
       siren_siretClient: [null],
     });
   }
@@ -56,9 +58,11 @@ export class NewInvoiceComponent implements OnInit {
   }
 
   onInvoiceFormSubmit(): void {
-    this.viewChildren.forEach((invoiceItemComponent: NewInvoiceItemComponent) => {
-      invoiceItemComponent.onItemFormSubmit();
-    });
+    this.viewChildren.forEach(
+      (invoiceItemComponent: NewInvoiceItemComponent) => {
+        invoiceItemComponent.onItemFormSubmit();
+      }
+    );
     this.invoiceService.addNewInvoice(
       this.clientForm.value,
       this.detailsForm.value,

@@ -1,0 +1,81 @@
+.new-invoice {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 30px 0 30px 0;
+  
+}
+
+.invoice-handle {
+  border: 2px solid black;
+  border-radius: 15px;
+  width: 400px;
+}
+
+.invoice-form {
+  width: 600px;
+  padding: 10px 30px 10px 30px;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-line {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.form-item {
+  flex: 1;
+  display: flex;
+  justify-content:space-between;
+  margin-top: 5px;
+}
+
+.form-item label{
+  margin-left: 40px;
+}
+
+.items-field {
+  display: flex;
+}
+
+.field-desc {
+  margin-right: 160px;
+  margin-left: 15px;
+}
+
+.field-quant {margin-right: 20px;
+}
+
+.field-price {
+  margin-right: 50px;
+}
+
+.field-tva {
+  margin-right: 15px;
+}
+
+.field-mnt-tva {
+  margin-right: 15px;
+}
+
+.add-item-button {
+  display: flex;
+  align-items: center;
+}
+
+.add-item-button h4 {
+  margin-right: 10px;
+}
+
+.save-button {
+  margin: 30px 0 20px;
+}
+

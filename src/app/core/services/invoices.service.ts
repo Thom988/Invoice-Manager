@@ -16,6 +16,7 @@ export class InvoicesService {
       cpClient: number;
       villeClient: string;
       paysClient: string;
+      telClient: string;
       siren_siretClient: string;
     },
     detailsForm: {
@@ -38,6 +39,7 @@ export class InvoicesService {
         codePostal: clientForm.cpClient,
         ville: clientForm.villeClient,
         pays: clientForm.paysClient,
+        tel: clientForm.telClient,
         siren_siret: clientForm.siren_siretClient,
       },
       invoiceItems: invoiceItems,
