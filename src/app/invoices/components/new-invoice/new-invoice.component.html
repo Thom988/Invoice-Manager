@@ -1,6 +1,6 @@
 <div class="new-invoice">
   <div class="invoice-handle">
-    <h2>PARTIE GAUCHE</h2>
+    <h2>PARTIE GAUCHE, nécessaire ?</h2>
   </div>
   <div class="invoice-form">
     <h2>Nouvelle facture</h2>
@@ -83,7 +83,7 @@
       (itemDeleteEvent)="onDeleteItemForm($event)"
     ></app-new-invoice-item>
     <div class="save-button">
-      <button type="submit" (click)="onInvoiceFormSubmit()">Enregistrer</button>
+      <button type="submit" (click)="onInvoiceFormSubmit()" [disabled]="clientForm.invalid">Enregistrer</button>
     </div>
   </div>
 </div>

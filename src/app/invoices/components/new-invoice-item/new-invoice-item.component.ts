@@ -21,7 +21,7 @@ itemForm!: FormGroup;
       nom: [null],
       quantite: [null],
       prix: [null],
-      TVA: [null],
+      TVA: [true],
       mntTVA: [null],
       total: [null]
     });

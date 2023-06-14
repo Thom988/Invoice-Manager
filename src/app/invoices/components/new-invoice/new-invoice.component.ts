@@ -1,5 +1,5 @@
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InvoiceItem } from 'src/app/core/models/invoice-item.model';
 import { InvoicesService } from 'src/app/core/services/invoices.service';
 import { NewInvoiceItemComponent } from '../new-invoice-item/new-invoice-item.component';
@@ -30,14 +30,14 @@ export class NewInvoiceComponent implements OnInit {
       totalMntTVA: [null],
     });
     this.clientForm = this.formBuilder.group({
-      nomClient: [null],
+      nomClient: [null, [Validators.required]],
       emailClient: [null],
-      adresseClient: [null],
-      cpClient: [null],
-      villeClient: [null],
-      paysClient: [null],
+      adresseClient: [null, [Validators.required]] ,
+      cpClient: [null, [Validators.required]] ,
+      villeClient: [null,[Validators.required]],
+      paysClient: [null,[Validators.required]],
       telClient: [null],
-      siren_siretClient: [null],
+      siren_siretClient: [null, [Validators.required]],
     });
   }
 
