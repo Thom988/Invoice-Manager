@@ -1,89 +1,80 @@
-<div class="new-invoice">
-  <div class="invoice-handle">
-    <h2>PARTIE GAUCHE, nécessaire ?</h2>
+<div class="invoice-form">
+  <h2>Nouvelle facture</h2>
+  <h3>Clients</h3>
+  <form [formGroup]="clientForm">
+    <div class="cient-form-group">
+      <div class="form-item">
+        <label for="nomClient">Nom*</label>
+        <input type="text" formControlName="nomClient" />
+      </div>
+      <div class="form-item">
+        <label for="email">Email</label>
+        <input type="text" formControlName="emailClient" />
+      </div>
+      <div class="form-item">
+        <label for="adresse">Adresse*</label>
+        <input type="text" formControlName="adresseClient" />
+      </div>
+      <div class="form-item">
+        <label for="codePostal">CP*</label>
+        <input type="text" formControlName="cpClient" />
+      </div>
+      <div class="form-item">
+        <label for="ville">Ville*</label>
+        <input type="text" formControlName="villeClient" />
+      </div>
+      <div class="form-item">
+        <label for="pays">Pays*</label>
+        <input type="text" formControlName="paysClient" />
+      </div>
+      <div class="form-item">
+        <label for="telephone">Telephone</label>
+        <input type="tel" formControlName="telClient" />
+      </div>
+      <div class="form-item">
+        <label for="siren_siret">SIRET*</label>
+        <input type="text" formControlName="siren_siretClient" />
+      </div>
+    </div>
+  </form>
+  <h3>Details facture</h3>
+  <form [formGroup]="detailsForm">
+    <div class="date-form-group">
+      <div class="form-item">
+        <label for="dateEmission">Date Emission</label>
+        <input type="date" formControlName="dateEmission" />
+      </div>
+      <div class="form-item">
+        <label for="dateEcheance">Date Echeance</label>
+        <input type="date" formControlName="dateEcheance" />
+      </div>
+    </div>
+  </form>
+  <div class="add-item-button">
+    <h4>Items</h4>
+    <button (click)="onAddItem()">+</button>
   </div>
-  <div class="invoice-form">
-    <h2>Nouvelle facture</h2>
-    <h3>Clients</h3>
-    <form [formGroup]="clientForm">
-      <div class="form-group">
-        <div class="form-line">
-          <div class="form-item">
-            <label for="nomClient">Nom</label>
-            <input type="text" formControlName="nomClient" />
-          </div>
-          <div class="form-item">
-            <label for="email">Email</label>
-            <input type="text" formControlName="emailClient" />
-          </div>
-        </div>
-        <div class="form-line">
-          <div class="form-item">
-            <label for="adresse">Adresse</label>
-            <input type="text" formControlName="adresseClient" />
-          </div>
-          <div class="form-item">
-            <label for="codePostal">CP</label>
-            <input type="text" formControlName="cpClient" />
-          </div>
-        </div>
-        <div class="form-line">
-          <div class="form-item">
-            <label for="ville">Ville</label>
-            <input type="text" formControlName="villeClient" />
-          </div>
-          <div class="form-item">
-            <label for="pays">Pays</label>
-            <input type="text" formControlName="paysClient" />
-          </div>
-        </div>
-        <div class="form-line">
-          <div class="form-item">
-            <label for="telephone">Telephone</label>
-            <input type="tel" formControlName="telClient" />
-          </div>
-          <div class="form-item">
-            <label for="siren_siret">SIRET</label>
-            <input type="text" formControlName="siren_siretClient" />
-          </div>
-        </div>
-      </div>
-    </form>
-    <h3>Details facture</h3>
-    <form [formGroup]="detailsForm">
-      <div class="form-group">
-        <div class="form-line">
-          <div class="form-item">
-            <label for="dateEcheance">Date Echeance</label>
-            <input type="date" formControlName="dateEcheance" />
-          </div>
-          <div class="form-item">
-            <label for="dateEmission">Date Emission</label>
-            <input type="date" formControlName="dateEmission" />
-          </div>
-        </div>
-      </div>
-    </form>
-    <div class="add-item-button">
-      <h4>Items</h4>
-      <button (click)="onAddItem()">+</button>
-    </div>
-    <div class="items-field">
-      <div class="field-desc"><p>Description</p></div>
-      <div class="field-quant"><p>Qte</p></div>
-      <div class="field-price"><p>Prix</p></div>
-      <div class="field-tva"><p>TVA</p></div>
-      <div class="field-mnt-tva"><p>mnt TVA</p></div>
-      <div class="field-total"><p>Total</p></div>
-    </div>
-    <app-new-invoice-item
-      *ngFor="let itemElement of invoiceItems; let i = index"
-      [item]="itemElement"
-      (itemSaveEvent)="saveItemData($event, i)"
-      (itemDeleteEvent)="onDeleteItemForm($event)"
-    ></app-new-invoice-item>
-    <div class="save-button">
-      <button type="submit" (click)="onInvoiceFormSubmit()" [disabled]="clientForm.invalid">Enregistrer</button>
-    </div>
+  <div class="items-field">
+    <div class="field-desc"><p>Description</p></div>
+    <div class="field-quant"><p>Qte</p></div>
+    <div class="field-price"><p>Prix</p></div>
+    <div class="field-tva"><p>TVA</p></div>
+    <div class="field-mnt-tva"><p>mnt TVA</p></div>
+    <div class="field-total"><p>Total</p></div>
+  </div>
+  <app-new-invoice-item
+    *ngFor="let itemElement of invoiceItems; let i = index"
+    [item]="itemElement"
+    (itemSaveEvent)="saveItemData($event)"
+    (itemDeleteEvent)="onDeleteItemForm($event)"
+  ></app-new-invoice-item>
+  <div class="save-button">
+    <button
+      type="submit"
+      (click)="onInvoiceFormSubmit()"
+      [disabled]="clientForm.invalid"
+    >
+      Enregistrer
+    </button>
   </div>
 </div>

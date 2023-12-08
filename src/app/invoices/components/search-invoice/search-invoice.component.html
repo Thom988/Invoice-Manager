@@ -1,39 +1,58 @@
-<div class="search-bar">
-  <form (ngSubmit)="onSubmitForm()">
-    <div class="form-group">
-      <label for="numero">Numero</label>
-      <input type="text" name="numero" [(ngModel)]="invoiceNumber" [disabled]="isDatesVisible"/>
-    </div>
-    <div class="form-group">
-      <label for="nomClient">Nom Client</label>
-      <input type="text" name="nomClient" [(ngModel)]="clientName"/>
-    </div>
-    <div class="form-group">
-      <div class="checkbox">
-        <label for="checkboxDate">Date Emission</label>
-        <input type="checkbox" name="checkboxDate" (click)="onCheckboxDate()" />
+<div class="search-pages">
+  <div class="search-bar">
+    <form (ngSubmit)="onSubmitForm()">
+      <div class="form-group">
+        <div class="form-item">
+          <label for="numero">Numero</label>
+          <input
+            type="text"
+            name="numero"
+            [(ngModel)]="invoiceNumber"
+            [disabled]="isDatesVisible"
+          />
+        </div>
+        <div class="form-item">
+          <label for="nomClient">Nom Client</label>
+          <input
+            type="text"
+            name="nomClient"
+            [(ngModel)]="clientName"
+            [disabled]="isDatesVisible"
+          />
+        </div>
+        <div class="form-item">
+          <div class="checkbox">
+            <label for="checkboxDate">Date Emission</label>
+            <input
+              type="checkbox"
+              name="checkboxDate"
+              (click)="onCheckboxDate()"
+            />
+          </div>
+        </div>
       </div>
-      <div
-        class="form-group"
-        [ngStyle]="{ display: isDatesVisible ? 'block' : 'none' }"
-      >
-        <label for="dateMin">Min</label>
-        <input type="date" name="dateMin" [(ngModel)]="issueDateMin" />
+      <div class="date-delimiter">
+        <div
+          class="form-item"
+          [ngStyle]="{ display: isDatesVisible ? 'flex' : 'none' }"
+        >
+          <label for="dateMin">Min</label>
+          <input type="date" name="dateMin" [(ngModel)]="issueDateMin" />
+        </div>
+        <div
+          class="form-item"
+          [ngStyle]="{ display: isDatesVisible ? 'flex' : 'none' }"
+        >
+          <label for="dateMax">Max</label>
+          <input type="date" name="dateMax" [(ngModel)]="issueDateMax" />
+        </div>
       </div>
-      <div
-        class="form-group"
-        [ngStyle]="{ display: isDatesVisible ? 'block' : 'none' }"
-      >
-        <label for="dateMax">Max</label>
-        <input type="date" name="dateMax" [(ngModel)]="issueDateMax" />
+      <div class="search-button">
+        <button type="submit">Filtrer</button>
       </div>
-    </div>
-    <div class="search-button">
-      <button type="submit">Rechercher</button>
-    </div>
-  </form>
+    </form>
+  </div>
+  <div class="invoices-list">
+    <app-invoices-list [invoicesList]="invoices"></app-invoices-list>
+  </div>
 </div>
-<app-invoice-list
-  *ngFor="let invoiceElement of invoices"
-  [invoice]="invoiceElement"
-></app-invoice-list>

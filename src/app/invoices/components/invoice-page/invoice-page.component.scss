@@ -1,0 +1,38 @@
+.invoice-page {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .invoice-handle {
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    max-width: 350px;
+  }
+
+  button {
+    border: none;
+    height: 40px;
+    width: 100px;
+    font-weight: 700;
+    margin-right: 20px;
+    align-items: center;
+    color: rgba(6, 32, 74, 0.91);
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+    background-color: white;
+  }
+
+  .create-btn {
+    background-color: rgba(183, 231, 252, 0.91);
+  }
+
+  .search-btn {
+    background-color: rgba(183, 231, 252, 0.91);
+  }
+
+
+  
+  
+
+  

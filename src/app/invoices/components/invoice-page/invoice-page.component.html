@@ -1,0 +1,25 @@
+<div class="invoice-page">
+  <div class="invoice-handle">
+    <button
+      class="create-btn"
+      [ngClass]="{ 'create-btn': switchComponent }"
+      (click)="onCreateInvoice()"
+    >
+      Creer
+    </button>
+    <button
+      class="search-btn"
+      [ngClass]="{ 'search-btn': !switchComponent }"
+      (click)="onSearchInvoice()"
+    >
+      Rechercher
+    </button>
+  </div>
+  <div class="invoice-display">
+    <app-search-invoice *ngIf="!switchComponent"></app-search-invoice>
+    <app-new-invoice
+      *ngIf="switchComponent"
+      (toggleParentVariableEvent)="onSearchInvoice()"
+    ></app-new-invoice>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="invoice-card" (click)="onInvoiceDisplay()">
+  <div class="invoice-card-header">
+    <p>{{ invoice.numero }}</p>
+  </div>
+  <p>{{ invoice.client.nom }}</p>
+  <p>{{invoice.client.codePostal}} {{invoice.client.ville}}</p>
+  <p>{{ invoice.dateEmission | date : "dd/MM/yyyy" }}</p>
+  <div class="invoice-total">
+    <label for="total">Total TTC</label>
+    <p style="font-weight: bolder">
+      {{ invoice.total | currency : "EUR" : "symbol" }}
+    </p>
+  </div>
+</div>

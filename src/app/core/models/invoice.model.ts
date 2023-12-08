@@ -9,7 +9,7 @@ export class Invoice {
     dateEmission!: Date;
     dateEcheance!: Date;
     totalHT!: number;
-    totalMntTVA!: number;
+    total!: number;
     id!: number;
 
     constructor() {
@@ -20,7 +20,7 @@ export class Invoice {
         this.dateEmission = new Date();
         this.dateEcheance = new Date();
         this.totalHT = 0;
-        this.totalMntTVA = 0;
+        this.total = 0;
 
     }
 } 

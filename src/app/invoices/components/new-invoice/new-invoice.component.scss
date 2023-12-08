@@ -1,28 +1,19 @@
-.new-invoice {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  padding: 30px 0 30px 0;
-  
-}
-
-.invoice-handle {
-  border: 2px solid black;
-  border-radius: 15px;
-  width: 400px;
-}
-
 .invoice-form {
-  width: 600px;
-  padding: 10px 30px 10px 30px;
+  padding: 20px;
   box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
+  margin: 0 30px 30px 30px;
+  max-width: 45%;
 }
 
-.form-group {
+.cient-form-group, .date-form-group {
   display: flex;
   flex-direction: column;
+  max-width: 400px;
+}
+
+.cient-form-group input {
+  width: 220px;
+
 }
 
 .form-line {
@@ -34,11 +25,11 @@
 .form-item {
   flex: 1;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   margin-top: 5px;
 }
 
-.form-item label{
+.form-item label {
   margin-left: 40px;
 }
 
@@ -51,7 +42,8 @@
   margin-left: 15px;
 }
 
-.field-quant {margin-right: 20px;
+.field-quant {
+  margin-right: 20px;
 }
 
 .field-price {
@@ -78,4 +70,3 @@
 .save-button {
   margin: 30px 0 20px;
 }
-

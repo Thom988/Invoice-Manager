@@ -1,0 +1,46 @@
+.search-pages {
+    display: flex;
+    flex-direction: row;
+}
+
+.search-bar {
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    margin: 0 15px 0 30px;
+    height: 100vh;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-item {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 20px;
+    justify-content: space-between;
+}
+
+.date-delimiter  {
+    max-width: 300px;
+}
+
+label {
+    margin-right: 20px;
+}
+
+/*
+
+.search-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+
+.invoices-list {
+    
+}
+*/

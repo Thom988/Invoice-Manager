@@ -1,16 +1,34 @@
 .header {
-  background-color: rgb(159, 250, 241);
+  background-color: rgba(134, 216, 252, 0.91);
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 20px 0 20px 0;
+  justify-content: space-between;
+  padding: 20px 40px 20px 20px;
+
 }
 
-.header img {
+.menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+img {
     width: 20%;
 }
 
 nav {
-  margin-left: 5%;
+  width: 400px;
+} 
+
+nav ul {
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
 }
 
+li {
+  padding: 10px;
+  text-align: center;
+}

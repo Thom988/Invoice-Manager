@@ -1,37 +1,22 @@
 <div class="item-card">
   <form [formGroup]="itemForm" (ngSubmit)="onItemFormSubmit()">
     <div class="form-group">
-      <div class="item-id">
-        {{ item.id }}
+      <div class="id">
+        {{item.id}}
       </div>
-      <div class="form-item">
-        <input type="text" formControlName="nom" class="description" />
-      </div>
-      <div class="form-item">
-        <!-- <label for="quantite">Quantite</label> -->
-        <input type="text" formControlName="quantite" />
-      </div>
-      <div class="form-item">
-        <!-- <label for="prix">Prix</label> -->
-        <input type="text" formControlName="prix" class="mnt"/>
-        <!-- <p>{{  | currency: 'EUR':'code' }}</p> -->
-      </div>
-      <div class="form-item">
-        <!-- <label for="TVA">TVA</label> -->
-        <input type="checkbox" formControlName="TVA" />
-      </div>
-      <div class="form-item">
-        <!-- <label for="pays">Montant TVA</label> -->
-        <input type="text" formControlName="mntTVA" class="mnt" />
-        <!-- <p>{{  | currency: 'EUR':'code' }}</p> -->
-      </div>
-      <div class="form-item">
-        <!-- <label for="total">Total</label> -->
-        <input type="text" formControlName="total" class="mnt" />
-        <!-- <p>{{  | currency: 'EUR':'code' }}</p> -->
-      </div>
+      <input type="text" formControlName="nom" class="description" id="nom" />
+      <input type="number" min="0" formControlName="quantite" class="quantite" id="quantite"/>
+      <input type="number" min="0" formControlName="prix" class="prix" id="prix" />
+      <select formControlName="tauxTVA" class="taux-tva" id="tauxTVA">
+        <option value="0">Auncune</option>
+        <option value="20">20%</option>
+        <option value="10">10%</option>
+        <option value="5">5%</option>
+      </select>
+      <div class="montants">{{ item.mntTVA | currency : "EUR" : "symbol" }}</div>
+      <div class="montants">{{ item.total | currency : "EUR" : "symbol" }}</div>
       <div class="delete-button">
-        <button (click)="onDeleteItem()">x</button>
+        <button (click)="onDeleteItem(item.id)">x</button>
       </div>
     </div>
   </form>

@@ -1,41 +1,32 @@
 <header>
   <div class="header">
-    <img src="./assets/MATT-RENO_logo.png" alt="logo MATT-RENO">
-    <nav class="nav">
-      <div class="menu">
+    <div class="menu">
+      <img src="./assets/MATT-RENO_logo.png" alt="logo MATT-RENO" />
+      <nav>
         <ul>
           <li>
             <a
               routerLink=""
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
               >Accueil</a
             >
           </li>
           <li>
-            <a>Facture</a>
-            <ul>
-              <li>
-                <a routerLink="invoices/create">Créer</a>
-              </li>
-              <li>
-                <a routerLink="invoices/search">Rechercher</a>
-              </li>
-            </ul>
+            <a>Clients</a>
           </li>
           <li>
-            <a>Clients</a>
-            <ul>
-              <li>
-                <a routerLink="clients/create">Créer</a>
-              </li>
-              <li>
-                <a routerLink="clients/search">Rechercher</a>
-              </li>
-            </ul>
+            <a>Devis</a>
+          </li>
+          <li>
+            <a
+              routerLink="invoices"
+              >Facture</a
+            >
           </li>
         </ul>
-      </div>
-    </nav>
+      </nav>
+    </div>
+    <div class="connection-link">
+      <a>Connexion</a>
+    </div>
   </div>
 </header>

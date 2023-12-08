@@ -16,9 +16,9 @@ export class ClientsService {
     adresse: '3 chemin des Poilus',
     codePostal: 30400,
     ville: 'Villeneuve-les-Avignon',
-    pays!: 'France',
-    siren_siret!: 0,
-    invoices: []
+    pays: 'France',
+    tel: '0763007916',
+    siren_siret: ''
     })
   ];
 
@@ -37,6 +37,8 @@ export class ClientsService {
     return client || null;
   }
 
+  /*
+
   getClientInvoicesByName(nom: string): Invoice[] | null {
     const client = this.getClientByName(nom);
     if (client) {
@@ -49,5 +51,7 @@ export class ClientsService {
     const client = this.clients.find(c => c.nom === clienrName);
     client ? client.invoices.push(invoice) : null;
   }
+
+*/
 
 }

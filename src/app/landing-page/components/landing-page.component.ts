@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
@@ -8,7 +6,7 @@ import { Router } from '@angular/router';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
