@@ -26,7 +26,7 @@ export class InvoicesService {
           nom: "changement robinet",
           quantite: 1,
           prix: 100,
-          TVA: 20,
+          tva: 20,
           mntTVA: 20,
           total: 120,
           id: 1,
@@ -56,7 +56,7 @@ export class InvoicesService {
           nom: "changement bac douche",
           quantite: 1,
           prix: 2000,
-          TVA: 20,
+          tva: 20,
           mntTVA: 400,
           total: 2400,
           id: 1,
@@ -89,6 +89,7 @@ export class InvoicesService {
   ): void {
     const numRM = "FR0044347940244";
     let invoice: Invoice = new Invoice();
+    console.log("à l'enregistrement de l'objet : tva = " + typeof(invoiceItems[0].tva))
     invoice = {
       numero: this.getNewInvoiceNumber(),
       numRM: numRM,

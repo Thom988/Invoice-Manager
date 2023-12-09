@@ -25,12 +25,14 @@
 }
 
 .montants {
-  padding: 1px;
+  display: flex;
   background-color: rgba(152, 224, 255, 0.91);
-  text-align: center;
+  justify-content: center;
+  padding: 5px 5px 0 5px;
   font-size: 90%;
   width: 80px;
-  border: 1px solid rgba(0, 0, 0, 0.4);
+  height: 20px;
+  border: 2px solid rgba(18, 25, 124, 0.5);
   margin-right: 10px;
 }
 .prix {
@@ -38,8 +40,22 @@
   margin-right: 10px;
 }
 
-.taux-tva {
+.tva {
+  align-items: center;
   margin-right: 10px;
+  height: 28px;
+  border: 2px solid rgba(18, 25, 124, 0.5);
+}
+
+.delete-button button {
+  height: 25px;
+  width: 25px;
+  justify-content: center;
+  font-weight: 600;
+  color: rgba(18, 25, 124, 0.832);
+  background-color: rgba(152, 224, 255, 0.91);
+  border: 2px solid rgba(18, 25, 124, 0.5);
+  border-radius: 4px;
 }
 
 

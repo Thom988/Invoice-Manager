@@ -7,11 +7,11 @@
       <input type="text" formControlName="nom" class="description" id="nom" />
       <input type="number" min="0" formControlName="quantite" class="quantite" id="quantite"/>
       <input type="number" min="0" formControlName="prix" class="prix" id="prix" />
-      <select formControlName="tauxTVA" class="taux-tva" id="tauxTVA">
-        <option value="0">Auncune</option>
-        <option value="20">20%</option>
-        <option value="10">10%</option>
-        <option value="5">5%</option>
+      <select type="number" formControlName="tva" class="tva" id="tva">
+        <option value=0>Auncune</option>
+        <option value=20>20%</option>
+        <option value=10>10%</option>
+        <option value=5>5%</option>
       </select>
       <div class="montants">{{ item.mntTVA | currency : "EUR" : "symbol" }}</div>
       <div class="montants">{{ item.total | currency : "EUR" : "symbol" }}</div>

@@ -3,7 +3,7 @@ export class InvoiceItem {
     nom!: string;
     quantite!: number;
     prix!: number;
-    TVA!: number;
+    tva!: number;
     mntTVA!: number;
     total!: number;
     id!: number;
@@ -12,7 +12,7 @@ export class InvoiceItem {
         this.nom = '';
         this.quantite = 1;
         this.prix = 0;
-        this.TVA = 20;
+        this.tva = 20;
         this.mntTVA = 0;
         this.total = 0;
         this.id = id;

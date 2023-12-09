@@ -22,7 +22,7 @@ export class NewInvoiceItemComponent implements OnInit {
       nom: new FormControl(this.item.nom),
       quantite: new FormControl(this.item.quantite),
       prix: new FormControl(this.item.prix),
-      tauxTVA: new FormControl(this.item.TVA)
+      tva: new FormControl(this.item.tva)
     });
     this.itemForm.valueChanges.subscribe((formValue) => {
       this.calculateAmount(formValue);
@@ -33,13 +33,13 @@ export class NewInvoiceItemComponent implements OnInit {
     nom: string;
     quantite: number;
     prix: number;
-    tauxTVA: number;
+    tva: number;
   }): void {
     this.item.mntTVA =
-      itemFormValue.tauxTVA !== 0
+      itemFormValue.tva !== 0
         ? (itemFormValue.prix *
             itemFormValue.quantite *
-            itemFormValue.tauxTVA) /
+            itemFormValue.tva) /
           100
         : 0;
     this.item.total =
@@ -47,8 +47,16 @@ export class NewInvoiceItemComponent implements OnInit {
   }
 
   onItemFormSubmit() {
+    const strTVA: string = this.itemForm.get("tva")?.value;
+    const nom: string = this.itemForm.get("nom")?.value;
+    const prix: number = this.itemForm.get("prix")?.value;
+    const quantite: number = this.itemForm.get("quantite")?.value;
+    const tva: number = parseInt(strTVA,10);
     const updatedItem: InvoiceItem = {
-      ...this.itemForm.value, 
+      nom: nom,
+      prix: prix,
+      quantite: quantite,
+      tva: tva, 
       mntTVA: this.item.mntTVA,
       total: this.item.total,
       id: this.item.id, 

@@ -22,9 +22,7 @@ export class NewInvoiceComponent implements OnInit {
   constructor(
     private invoiceService: InvoicesService,
     private formBuilder: FormBuilder,
-    private dateService: DateService,
-    private router:Router
-  ) {}
+    private dateService: DateService  ) {}
 
   ngOnInit(): void {
     const dtEmission: Date = new Date();
@@ -63,6 +61,7 @@ export class NewInvoiceComponent implements OnInit {
 
   saveItemData(item: InvoiceItem) {
     this.invoiceItems[item.id - 1] = item;
+    console.log(item.prix);
   }
 
   triggerToggleParentVariable() {
