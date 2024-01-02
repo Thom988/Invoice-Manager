@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 import { InvoiceItem } from 'src/app/core/models/invoice-item.model';
 
 @Component({
@@ -13,7 +12,6 @@ export class NewInvoiceItemComponent implements OnInit {
   @Output() itemSaveEvent = new EventEmitter<InvoiceItem>();
   @Output() itemDeleteEvent = new EventEmitter<number>();
   itemForm!: FormGroup;
-  PricePattern: RegExp = /\d+\.\d{2}$/;
 
   constructor(private formBuilder: FormBuilder) {}
 

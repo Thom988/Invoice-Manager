@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { invoicesRoutingModule } from "src/app/invoices/invoices-routing.module";
 import { InvoiceItem } from "../models/invoice-item.model";
 import { Invoice } from "../models/invoice.model";
 import { DateService } from "./date.service";

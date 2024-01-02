@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Client } from '../models/client.model';
-import { Invoice } from '../models/invoice.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +10,13 @@ export class ClientsService {
 
   clients: Client[] = [
     ({
-    nom: 'Thomas Quillet',
-    email: 't.quillet@hotmail.fr',
-    adresse: '3 chemin des Poilus',
-    codePostal: 30400,
-    ville: 'Villeneuve-les-Avignon',
+    nom: 'Thomas Dupond',
+    email: 'tdupond@lagoon.fr',
+    adresse: '13 chemin des Dupond',
+    codePostal: 98846,
+    ville: 'Avignon',
     pays: 'France',
-    tel: '0763007916',
+    tel: '0700540054',
     siren_siret: ''
     })
   ];

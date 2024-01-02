@@ -82,3 +82,16 @@
   border-radius: 4px;
   line-height: 20px;
 }
+
+.invalid-field {
+  border : 2px solid #AC4D39;
+  box-shadow: 0 0 5px #E54D2E;
+}
+
+label span, .legend {
+  color: #E54D2E;
+}
+
+.legend p {
+  font-size: smaller;
+}
