@@ -2,11 +2,10 @@
     <div>
         <button (click)="onPreviousPage()">X</button>
     </div>
-    <div class="invoice-display">
+    <div id="invoice-display">
         <div class="invoice-header">
             <h1>Facture {{invoice?.numero}}</h1>
         </div>
-    
         <div class="invoice-details">
             <div class="invoice-from">
                 <h4>De:</h4>
@@ -15,7 +14,6 @@
                 <p>Noumea, 98800</p>
                 <p>Nouvelle-Calédonie</p>
             </div>
-    
             <div class="invoice-to">
                 <h4>À:</h4>
                 <p>{{invoice?.client?.nom}}</p>
@@ -25,7 +23,6 @@
                 <p>SIREN/SIRET : {{invoice?.client?.siren_siret}}</p>
             </div>
         </div>
-    
         <table class="item-table">
             <thead>
                 <tr>
@@ -48,7 +45,6 @@
                 </tr>
             </tbody>
         </table>
-    
         <div class="invoice-total">
             <p>Total HT : {{invoice?.totalHT | currency : 'EUR'}}</p>
             <p>Total TTC : {{invoice?.total | currency : 'EUR'}}</p>

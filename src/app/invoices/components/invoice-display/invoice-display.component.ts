@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Invoice } from 'src/app/core/models/invoice.model';
 import { InvoicesService } from 'src/app/core/services/invoices.service';
+// 
 
 @Component({
   selector: 'app-invoice-display',
@@ -22,7 +23,6 @@ export class InvoiceDisplayComponent implements OnInit {
         if (idFromParams) {
           this.invoiceId = parseInt(idFromParams,10); // Utilisation de l'opérateur + pour la conversion
           this.invoice = this.invoiceService.getInvoiceById(this.invoiceId);
-          console.log(this.invoice)
         }
       });
     }
@@ -30,4 +30,5 @@ export class InvoiceDisplayComponent implements OnInit {
     onPreviousPage() {
       this.router.navigateByUrl('invoices');
     }
+
 }
