@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Invoice } from 'src/app/core/models/invoice.model';
 import { InvoicesService } from 'src/app/core/services/invoices.service';
 // 
+import * as jspdf from "jspdf";
+import html2canvas from "html2canvas";
 
 @Component({
   selector: 'app-invoice-display',
@@ -29,6 +31,24 @@ export class InvoiceDisplayComponent implements OnInit {
 
     onPreviousPage() {
       this.router.navigateByUrl('invoices');
+    }
+
+    public convertToPDF() {
+      var data = document.getElementById("invoice-display");
+      if (data !== null) {
+        html2canvas(data).then((canvas) => {
+          var imgWidth = 210;
+          var pageHeight = 297;
+          var imgHeight = (canvas.height * imgWidth) / canvas.width;
+          // var heightLeft = imgHeight;
+          const contentDataURL = canvas.toDataURL("image/png");
+          let pdf = new jspdf.jsPDF("p", "mm", "a4"); // A4 size page of PDF
+          var position = 0;
+          pdf.addImage(contentDataURL, "PNG", 0, position, imgWidth, 297);
+          pdf.save(`Facture_${this.invoice?.numero}.pdf`); // Generated PDF
+        });
+      }
+        
     }
 
 }

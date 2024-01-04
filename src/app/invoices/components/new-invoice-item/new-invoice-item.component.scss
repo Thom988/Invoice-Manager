@@ -26,7 +26,9 @@
 
 .montants {
   display: flex;
-  background-color: rgba(152, 224, 255, 0.91);
+  background-color: #004744;
+  border: 2px solid #25bdb5;
+  color: #C4F5E1;
   justify-content: center;
   padding: 5px 5px 0 5px;
   font-size: 90%;
@@ -34,7 +36,6 @@
   width: 80px;
   height: 20px;
   border-radius: 5px;
-  border: 2px solid rgba(18, 25, 124, 0.5);
   margin-right: 10px;
 }
 .prix {
@@ -51,14 +52,19 @@
 }
 
 .delete-button button {
-  height: 25px;
-  width: 25px;
-  justify-content: center;
+  height: 26px;
+  width: 26px;
+  color: #E54D2E;
   font-weight: 600;
-  color: rgba(18, 25, 124, 0.832);
-  background-color: rgba(152, 224, 255, 0.91);
-  border: 2px solid rgba(18, 25, 124, 0.5);
-  border-radius: 4px;
+  // justify-content: center;
+  // align-items: center;
+  background-color: #ebaeb967;
+  border: 2px solid #ff635e;
+  border-radius: 50%;
 }
 
-
+.delete-button button:hover {
+  background-color: rgba(252, 225, 225, 0.788);
+  border-color: #E54D2E;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}

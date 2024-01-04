@@ -1,21 +1,21 @@
 .header {
-  background-color: rgba(134, 216, 252, 0.91);
+  background-color: #3B1219;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 20px 40px 20px 20px;
+}
 
+#app-logo {
+  width: 150px;
+  height: auto;
 }
 
 .menu {
   display: flex;
   flex-direction: row;
   align-items: center;
-}
-
-img {
-    width: 20%;
 }
 
 nav {
@@ -28,7 +28,20 @@ nav ul {
   list-style-type: none;
 }
 
-li {
+li button {
+  color: #C4F5E1;
+  border-radius: 10px;
+  border: 2px solid #277F70;
+  align-items: center;
+  justify-content: center;
+  //background-color: #A8F5E5;
+  background-color: #004744;
   padding: 10px;
   text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+li button:hover {
+  background-color: #277F70;
+  transition: background-color 0.3s ease;
 }
