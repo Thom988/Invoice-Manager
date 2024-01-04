@@ -2,11 +2,11 @@
     display: flex;
     flex-direction: column;
   }
+
   
   .invoice-handle {
     margin: 30px;
     display: flex;
-    justify-content: center;
     flex-direction: row;
     max-width: 350px;
   }
@@ -17,20 +17,23 @@
     width: 100px;
     font-weight: 700;
     margin-right: 20px;
+    border-radius: 10px;
     align-items: center;
-    color: rgba(6, 32, 74, 0.91);
-    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
-    background-color: white;
+    color:  #611623;
+    background-color: #ebaeb967;
   }
 
-  .create-btn {
-    background-color: rgba(183, 231, 252, 0.91);
+  button:hover {
+    background-color: #611623;
+    color: #FFD1D9;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  .search-btn {
-    background-color: rgba(183, 231, 252, 0.91);
+  .create-btn, .search-btn {
+    background-color: #611623;
+    color:#FFD1D9;
+    border: 3px solid #FF9592;
   }
-
 
   
   

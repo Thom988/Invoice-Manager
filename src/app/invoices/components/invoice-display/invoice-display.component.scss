@@ -1,82 +1,159 @@
 .display-page {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-.invoice-display {
-    border: 1px solid #ddd;
-    padding: 40px;
-    margin: 30px 30px 30px 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);   
+#invoice-display {
+  padding: 40px;
+  margin: 30px 30px 30px 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
+  width: 794px;
+  height: 1123px;
+  position: relative;
 }
 
-button {
-    display: block;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-weight: 600;
-    color: rgba(18, 25, 124, 0.832);
-    background-color: rgba(152, 224, 255, 0.91);
-    border: 2px solid rgba(18, 25, 124, 0.5);
-    border: 2px solid rgba(18, 25, 124, 0.5);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);   
-    margin-top: 70px;
+#handle-buttons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
 }
 
+#handle-buttons button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-weight: 600;
+  color: rgba(18, 25, 124, 0.832);
+  background-color: #c4f5e1;
+  border: 2px solid #277f70;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#handle-buttons button:hover {
+  background-color: #5ff8bbcb;
+  transition: background-color 0.1s ease;
+}
+
+#icon-dlPDF {
+  width: 14px;
+  height: 14px;
+}
+
+#icon-fermer {
+  width: 10px;
+  height: 10px;
+}
 .invoice-header {
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    text-align: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 0px;
+  text-align: center;
 }
-
-.invoice-header:before {
-    background-image: url('/assets/MATT-RENO_logo.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    content: "";
-    display: block;
-    width: 150px;
-    height: 50px; 
-}
-
+// .invoice-header:before {
+//   background-image: url("/assets/MATT-RENO_logo.png");
+//   background-repeat: no-repeat;
+//   background-size: contain;
+//   content: "";
+//   display: block;
+//   width: 150px;
+//   height: 50px;
+// }
 .invoice-header h1 {
-    margin: 0;
-    color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+.invoice-details {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 30px;
+  margin: 0 30px 30px 30px;
 }
 
-.invoice-details {
-    display: flex;
-    justify-content: space-between;
+#invoice-dates {
+  //display: flex;
+  margin: 0px 30px;
+  // justify-content: space-between;
+}
+
+#invoice-dates div {
+  display: flex;
+  width: 270px;
+  height: 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#invoice-dates label {
+  margin-right: 10px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
+}
+
+
+h4,
+p,
+.item-table td {
+  font-family: "Courier New", Courier, monospace;
 }
 
 .invoice-from,
 .invoice-to {
-    margin-top: 40px;
-    //width: 48%;
+  margin-top: 40px;
+  //width: 48%;
 }
-
 .item-table {
-    margin: 60px 0;
-    width: 100%;
-    border-collapse: collapse;
+  margin: 60px 0;
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.item-table th, .item-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+.item-table th,
+.item-table td {
+  border: 1px solid #ddd;
+  padding: 4px 8px;
+  text-align: center;
+  font-size: smaller;
 }
 
 .item-table th {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
 .invoice-total {
-    margin-top: 20px;
-    text-align: left;
-    font-weight: 700;
+  padding-top: 30px;
+  text-align: left;
+  position: absolute;
+  width: 794px;
+  bottom: 30px;
+  left: 30px;
+  //   font-weight: 400;
+  //   border-top: 1px solid #ddd;
+}
 
+#total-ht,
+#total-ttc {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 40px;
+}
+
+.invoice-total label {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
+}
+
+.ligne {
+  width: 60%;
+  padding-top: 8px;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
 }

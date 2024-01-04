@@ -16,7 +16,7 @@
       <div class="montants">{{ item.mntTVA | currency : "EUR" : "symbol" }}</div>
       <div class="montants">{{ item.total | currency : "EUR" : "symbol" }}</div>
       <div class="delete-button">
-        <button (click)="onDeleteItem(item.id)">x</button>
+        <button type="button" (click)="onDeleteItem(item.id)">x</button>
       </div>
     </div>
   </form>
