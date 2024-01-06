@@ -1,33 +1,53 @@
 .search-pages {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .search-bar {
-    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
-    padding: 30px;
-    margin: 0 15px 0 30px;
-    height: 100vh;
-    background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  margin: 0 15px 0 30px;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-item {
-    display: flex;
-    flex-direction: row;
-    padding-bottom: 20px;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 20px;
+  justify-content: space-between;
 }
 
 label {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 .invalid-field {
-    border : 2px solid #AC4D39;
-    box-shadow: 0 0 5px #E54D2E;
-  }
+  border: 2px solid #ac4d39;
+  box-shadow: 0 0 5px #e54d2e;
+}
+
+.autocomplete-list {
+  position: absolute;
+  transform: translate(-2px,-3px);
+  background-color: #A8F5E5;
+  width: 173px;
+  border-radius: 5px;
+  white-space: nowrap; /* Empêche le texte de se retourner à la ligne */
+  overflow: hidden; /* Masque tout texte dépassant la largeur du conteneur */
+  text-overflow: ellipsis; /* Affiche une ellipse (...) à la fin du texte coupé */
+}
+
+.autocomplete-list div {
+    font-family: 'Times New Roman', Times, serif;
+    padding: 5px;
+}
+
+.autocomplete-list div:hover {
+    background-color:#008f8854;
+}

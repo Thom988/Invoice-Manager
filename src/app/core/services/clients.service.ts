@@ -48,6 +48,21 @@ export class ClientsService {
     return client || null;
   }
 
+  getClientFromSearch(
+    nom?: string,
+    email?: string,
+  ): Client | undefined {
+    let client: Client | undefined;
+    if (nom !== null && email === null  ) {
+     client = this.clients.find( client => client.nom === nom)
+    } else if ( nom === null && email !== null ) {
+      client = this.clients.find( client => client.email === email)
+    } else {
+      client = this.clients.find( client => client.email === email && client.nom === nom )
+    }
+    return client;
+  }
+
   /*
 
   getClientInvoicesByName(nom: string): Invoice[] | null {
@@ -57,6 +72,8 @@ export class ClientsService {
     }
     return null;
   }
+
+
 
   addClientInvoice(invoice: Invoice,clienrName: string): void {
     const client = this.clients.find(c => c.nom === clienrName);

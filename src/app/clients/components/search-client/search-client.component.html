@@ -1,36 +1,35 @@
 <div class="search-pages">
   <div class="search-bar">
-    <form [formGroup]="clientForm">
+    <form [formGroup]="clientSearchForm">
       <div class="form-group">
         <div class="form-item">
           <label for="nomClient">Nom</label>
-          <mat-form-field>
-            <input type="text" name="nomClient" matInput formControlName="nomClient" [matAutocomplete]="nom"/>
-          </mat-form-field>
+          <div>
+            <input type="text" name="nomClient" formControlName="nomClient" (focus)="onInputFocus()"/>
+            <div class="autocomplete-list" *ngIf="isInputFocused">
+              <div *ngFor="let clientName of filteredClientsName" (click)="selectClient(clientName);">
+                {{ clientName }}
+              </div>
+            </div>
+          </div>
         </div>
-        <mat-autocomplete #nom="matAutocomplete">
-          <mat-option *ngFor="let clientName of filteredClientsName" [value]="clientName">
-            {{ clientName }}
-          </mat-option>
-        </mat-autocomplete>
         <div class="form-item">
           <label for="emailClient">Email</label>
-          <input type="text" name="emailClient" formControlName="emailClient" [class.invalid-field]="isInputInvalid('emailClient')"/>
-        </div>
-        <div class="form-item">
-          <label for="telClient">Telephone</label>
-          <input type="text" name="telClient" formControlName="telClient" [class.invalid-field]="isInputInvalid('telClient')"/>
-        </div>
-        <div class="form-item">
-          <label for="siretClient">SIRET</label>
-          <input type="text" name="siretClient" formControlName="siretClient" [class.invalid-field]="isInputInvalid('siretClient')"/>
+          <input
+            type="text"
+            name="emailClient"
+            formControlName="emailClient"
+            [class.invalid-field]="isInputInvalid('emailClient')"
+          />
         </div>
         <div class="form-item"></div>
       </div>
       <div class="search-button">
-        <button type="submit">Filtrer</button>
+        <button type="submit" [disabled]="clientSearchForm.invalid" (click)="onClientSearchFormSubmit()">Filtrer</button>
       </div>
     </form>
   </div>
-  <div class="Clients-list"></div>
+  <div class="Clients-list">
+    <app-client-card *ngIf="client" [client]="client"></app-client-card>
+  </div>
 </div>

@@ -8,12 +8,14 @@ import { NewClientComponent } from './components/new-client/new-client.component
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
+import { ClientCardComponent } from './components/client-card/client-card.component';
 
 @NgModule({
   declarations: [
     ClientPageComponent,
     SearchClientComponent,
-    NewClientComponent
+    NewClientComponent,
+    ClientCardComponent
   ],
   imports: [
     CommonModule,
