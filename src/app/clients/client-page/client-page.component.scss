@@ -1,0 +1,40 @@
+.clients-page {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .clients-handle {
+    margin: 30px;
+    display: flex;
+    flex-direction: row;
+    max-width: 350px;
+  }
+
+  button {
+    border: none;
+    height: 40px;
+    width: 100px;
+    font-weight: 700;
+    margin-right: 20px;
+    border-radius: 10px;
+    align-items: center;
+    color:  #611623;
+    background-color: #ebaeb967;
+  }
+
+  button:hover {
+    background-color: #611623;
+    color: #FFD1D9;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .active-link {
+    background-color: #611623;
+    color:#FFD1D9;
+    border: 3px solid #FF9592;
+  }
+
+  
+  
+
+  

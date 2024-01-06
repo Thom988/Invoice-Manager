@@ -89,15 +89,13 @@ export class NewInvoiceComponent implements OnInit {
     this.triggerToggleParentVariable(); // modifie le booléen du composant parent pour revenir sur la page "searchInvoice"
   }
 
-  isInputValid(fieldName: string): boolean | undefined {
-    const emailControl = this.clientForm.get(fieldName);
-    return emailControl?.invalid;
+  isInputInvalid(fieldName: string): boolean | undefined {
+    const clientControl = this.clientForm.get(fieldName);
+    return clientControl?.invalid;
   }
 
-  isRequieredInputValid(fieldName: string): boolean | undefined {
-    const cpClientControl = this.clientForm.get(fieldName);
-    return cpClientControl?.invalid && cpClientControl.touched;
+  isRequieredInputInvalid(fieldName: string): boolean | undefined {
+    const clientControl = this.clientForm.get(fieldName);
+    return clientControl?.invalid && clientControl.touched;
   }
-
-
 }
