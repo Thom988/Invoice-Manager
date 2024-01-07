@@ -28,6 +28,7 @@ export class NewClientComponent implements OnInit {
     this.cpRegexp = "[0-9]{5}";
     this.telRegexp = "^0[1-9][0-9]{8}";
     this.siretRegexp = "^\\d{9}[\\d]{5}$";
+    this.client = new Client();
     this.clientForm = this.formBuilder.group(
       {
         nomClient: [null, [Validators.required]],
@@ -59,7 +60,14 @@ export class NewClientComponent implements OnInit {
   }
 
   onClientFormSubmit() {
-    this.client = this.clientForm.value;
+    this.client.nom = this.clientForm.get('nomClient')?.value;
+    this.client.email = this.clientForm.get('emailClient')?.value;
+    this.client.adresse = this.clientForm.get('adresseClient')?.value;
+    this.client.codePostal = this.clientForm.get('cpClient')?.value;
+    this.client.ville = this.clientForm.get('villeClient')?.value;
+    this.client.pays = this.clientForm.get('paysClient')?.value;
+    this.client.tel = this.clientForm.get('telClient')?.value;
+    this.client.siren_siret = this.clientForm.get('siren_siretClient')?.value;
     this.clientsService.addNewClient(this.client);
     this.router.navigateByUrl("clients");
   }

@@ -40,7 +40,6 @@ export class SearchClientComponent implements OnInit {
         this.filteredClientsName = [];
       } else {
         this.filteredClientsName = this.clientsService.clients.filter((client) => client.nom.toLowerCase().includes(nomClient.toLowerCase())).map((client) => client.nom);
-
       }
     });
   }

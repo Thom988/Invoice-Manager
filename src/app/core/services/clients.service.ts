@@ -40,7 +40,6 @@ export class ClientsService {
 
   addNewClient(client: Client): void {
     this.clients.push(client);
-    console.log(this.clients);
   }
 
   getClientByName(nom: string): Client | null {
