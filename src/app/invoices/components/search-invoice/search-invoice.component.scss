@@ -31,17 +31,26 @@ label {
     margin-right: 20px;
 }
 
-/*
-
-.search-button {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
-}
-
-
-.invoices-list {
-    
-}
-*/
+.autocomplete-list {
+    position: absolute;
+    // transform: translate(-2px,-3px);
+    background-color: #f7fffd;
+    width: 169px;
+    max-height: 200px; 
+    white-space: nowrap; /* Empêche le texte de se retourner à la ligne */
+    overflow: hidden; /* Masque tout texte dépassant la largeur du conteneur */
+    text-overflow: ellipsis; /* Affiche une ellipse (...) à la fin du texte coupé */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Ajout d'une ombre légère */
+    overflow-y: auto; /* Ajout de la barre de défilement vertical si nécessaire */
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+  
+  .autocomplete-list div {
+      font-family: 'Times New Roman', Times, serif;
+      padding: 5px;
+  }
+  
+  .autocomplete-list div:hover {
+      background-color:#008f8854;
+  }

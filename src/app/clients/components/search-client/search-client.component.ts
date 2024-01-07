@@ -16,7 +16,7 @@ export class SearchClientComponent implements OnInit {
   clientSearchForm!: FormGroup;
   filteredClientsName!: string[];
   isInputFocused: boolean = false;
-  client!: Client;
+  client!: Client | null;
 
   constructor(
     private clientsService: ClientsService,
@@ -34,16 +34,14 @@ export class SearchClientComponent implements OnInit {
       siretClient: [null, Validators.pattern(this.siretRegexp)],
     });
     this.clientSearchForm.get("nomClient")?.valueChanges.pipe(
-      debounceTime(300) // comme anti-rebond en electronique, permet de ne pas envoyer de requête à chaque entré utilisateur.
+      debounceTime(200) // comme anti-rebond en electronique, permet de ne pas envoyer de requête à chaque entré utilisateur.
     ).subscribe((nomClient) => {
-      this.filteredClientsName =
-        nomClient.length < 1
-          ? []
-          : this.clientsService.clients
-              .filter((client) =>
-                client.nom.toLowerCase().includes(nomClient.toLowerCase())
-              )
-              .map((client) => client.nom);
+      if (nomClient.length < 1) {
+        this.filteredClientsName = [];
+      } else {
+        this.filteredClientsName = this.clientsService.clients.filter((client) => client.nom.toLowerCase().includes(nomClient.toLowerCase())).map((client) => client.nom);
+
+      }
     });
   }
 
@@ -55,14 +53,21 @@ export class SearchClientComponent implements OnInit {
 
   // applique, sur le champ input, le client selectionné dans la liste autocompletée
   selectClient(clientName: string) {
-    this.clientSearchForm.get('nomClient')?.setValue(clientName);
-    this.isInputFocused = false;
+     this.clientSearchForm.get('nomClient')?.setValue(clientName);
+     this.isInputFocused = false;
   }
 
   // permet d'afficher la liste autocompletée au focus du champ
   onInputFocus() {
-    this.isInputFocused = true;
+      this.isInputFocused = true;
   }
+
+  // onInputBlur() {
+  //   const nom: string = this.clientSearchForm.get('nomClient')?.value;
+  //   if (this.clientsService.getClientByName(nom) === null) {
+  //     this.isInputFocused = false;
+  //   }
+  // }
 
   //lors du clique sur le bouton de soumission du formulaire
   onClientSearchFormSubmit() {
@@ -72,10 +77,8 @@ export class SearchClientComponent implements OnInit {
     if ( client != undefined) {
       this.client = client;
     } else {
-      
+      this.client = null;
     }
-    // this.clientSearchForm.reset();
-    this.filteredClientsName = [];
   } 
 
 

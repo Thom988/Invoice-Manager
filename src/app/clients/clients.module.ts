@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ClientPageComponent } from './client-page/client-page.component';
+import { ClientPageComponent } from './components/client-page/client-page.component';
 import { ClientsRoutingModule } from './clients-routing.module';
 import { SearchClientComponent } from './components/search-client/search-client.component';
 import { NewClientComponent } from './components/new-client/new-client.component';

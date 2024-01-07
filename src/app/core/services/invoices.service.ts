@@ -6,6 +6,8 @@ import { DateService } from "./date.service";
 export class InvoicesService {
   constructor(private dateService: DateService) {}
 
+  invoicesSearchList: Invoice[] = [];
+
   invoices: Invoice[] = [
     {
       numero: "202310-001",
@@ -195,7 +197,8 @@ export class InvoicesService {
     } else {
       sortedInvoices = [];
     }
-    return sortedInvoices;
+    this.invoicesSearchList = sortedInvoices;
+    return this.invoicesSearchList;
   }
 
 }

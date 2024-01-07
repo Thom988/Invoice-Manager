@@ -53,9 +53,9 @@ export class ClientsService {
     email?: string,
   ): Client | undefined {
     let client: Client | undefined;
-    if (nom !== null && email === null  ) {
+    if ((nom !== null || nom !== "") && (email === null || email === "") ) {
      client = this.clients.find( client => client.nom === nom)
-    } else if ( nom === null && email !== null ) {
+    } else if ( (nom === null || nom === "") && (email !== null || email !== "" ) ) {
       client = this.clients.find( client => client.email === email)
     } else {
       client = this.clients.find( client => client.email === email && client.nom === nom )

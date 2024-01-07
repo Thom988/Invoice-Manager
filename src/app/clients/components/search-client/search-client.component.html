@@ -5,9 +5,9 @@
         <div class="form-item">
           <label for="nomClient">Nom</label>
           <div>
-            <input type="text" name="nomClient" formControlName="nomClient" (focus)="onInputFocus()"/>
+            <input type="text" name="nomClient" formControlName="nomClient" autocomplete="off" (focus)="onInputFocus()" />
             <div class="autocomplete-list" *ngIf="isInputFocused">
-              <div *ngFor="let clientName of filteredClientsName" (click)="selectClient(clientName);">
+              <div *ngFor="let clientName of filteredClientsName" (click)="selectClient(clientName)">
                 {{ clientName }}
               </div>
             </div>

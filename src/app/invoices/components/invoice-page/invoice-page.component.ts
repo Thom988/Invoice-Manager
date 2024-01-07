@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-invoice-page',
@@ -7,20 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./invoice-page.component.scss']
 })
 export class InvoicePageComponent implements OnInit {
-  switchComponent: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  onCreateInvoice(): void {
-    this.switchComponent = true;
-  }
-
-  onSearchInvoice(): void {
-    this.switchComponent = false;
-
   }
 
 }

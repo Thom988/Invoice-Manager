@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { NewClientComponent } from "./components/new-client/new-client.component";
 import { SearchClientComponent } from "./components/search-client/search-client.component";
-import { ClientPageComponent } from "./client-page/client-page.component";
+import { ClientPageComponent } from "./components/client-page/client-page.component";
 
 const routes: Routes = [
     {path: '', component: ClientPageComponent, children: [

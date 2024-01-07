@@ -2,24 +2,20 @@
   <div class="invoice-handle">
     <button
       class="create-btn"
-      [ngClass]="{ 'create-btn': switchComponent }"
-      (click)="onCreateInvoice()"
+      routerLink="create"
+      routerLinkActive="active-link"
     >
       Creer
     </button>
     <button
       class="search-btn"
-      [ngClass]="{ 'search-btn': !switchComponent }"
-      (click)="onSearchInvoice()"
+      routerLink="search"
+      routerLinkActive="active-link"
     >
       Rechercher
     </button>
   </div>
   <div class="invoice-display">
-    <app-search-invoice *ngIf="!switchComponent"></app-search-invoice>
-    <app-new-invoice
-      *ngIf="switchComponent"
-      (toggleParentVariableEvent)="onSearchInvoice()"
-    ></app-new-invoice>
+    <router-outlet></router-outlet>
   </div>
 </div>
