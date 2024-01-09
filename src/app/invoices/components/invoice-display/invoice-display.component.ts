@@ -5,6 +5,8 @@ import { InvoicesService } from 'src/app/core/services/invoices.service';
 // 
 import * as jspdf from "jspdf";
 import html2canvas from "html2canvas";
+import { Client } from 'src/app/core/models/client.model';
+import { ClientsService } from 'src/app/core/services/clients.service';
 
 @Component({
   selector: 'app-invoice-display',
@@ -12,19 +14,23 @@ import html2canvas from "html2canvas";
   styleUrls: ['./invoice-display.component.scss'],
 })
 export class InvoiceDisplayComponent implements OnInit {
-  invoice: Invoice | null = null;
-  invoiceId: number | null = null;
+  invoice!: Invoice | undefined;
+  client!: Client | undefined;
 
   constructor(private invoiceService: InvoicesService,
     private activatedRoute: ActivatedRoute,
-    private router: Router) {}
+    private router: Router, 
+    private clientsService: ClientsService) {}
 
     ngOnInit(): void {
       this.activatedRoute.paramMap.subscribe(params => {
         const idFromParams = params.get('id');
         if (idFromParams) {
-          this.invoiceId = parseInt(idFromParams,10); // Utilisation de l'opérateur + pour la conversion
-          this.invoice = this.invoiceService.getInvoiceById(this.invoiceId);
+          const invoiceId = parseInt(idFromParams,10); // Utilisation de l'opérateur + pour la conversion
+          this.invoice = this.invoiceService.getInvoiceById(invoiceId);
+          if (this.invoice) {
+            this.client = this.clientsService.getClientById(this.invoice.idClient);
+          }
         }
       });
     }

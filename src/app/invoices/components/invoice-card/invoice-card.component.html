@@ -2,8 +2,8 @@
   <div class="invoice-card-header">
     <p>{{ invoice.numero }}</p>
   </div>
-  <p>{{ invoice.client.nom }}</p>
-  <p>{{invoice.client.codePostal}} {{invoice.client.ville}}</p>
+  <p>{{ client?.nom }}</p>
+  <p>{{ client?.codePostal }} {{ client?.ville }}</p>
   <p>{{ invoice.dateEmission | date : "dd/MM/yyyy" }}</p>
   <div class="invoice-total">
     <label for="total">Total TTC</label>

@@ -13,11 +13,11 @@
       </div>
       <div class="invoice-to">
         <h4>À:</h4>
-        <p>{{ invoice?.client?.nom }}</p>
-        <p>{{ invoice?.client?.adresse }}</p>
-        <p>{{ invoice?.client?.ville }}, {{ invoice?.client?.codePostal }}</p>
-        <p>{{ invoice?.client?.pays }}</p>
-        <p>SIREN/SIRET : {{ invoice?.client?.siren_siret }}</p>
+        <p>{{ client?.nom }}</p>
+        <p>{{ client?.adresse }}</p>
+        <p>{{ client?.ville }}, {{ client?.codePostal }}</p>
+        <p>{{ client?.pays }}</p>
+        <p>SIREN/SIRET : {{ client?.siren_siret }}</p>
       </div>
     </div>
     <div id="invoice-dates">

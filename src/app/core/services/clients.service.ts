@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Client } from "../models/client.model";
+import { Invoice } from "../models/invoice.model";
 
 @Injectable({
   providedIn: "root",
@@ -9,6 +10,7 @@ export class ClientsService {
 
   clients: Client[] = [
     {
+      id: 1,
       nom: "Thomas Dupond",
       email: "tdupond@lagoon.fr",
       adresse: "13 chemin des Dupond",
@@ -17,8 +19,10 @@ export class ClientsService {
       pays: "France",
       tel: "0700540054",
       siren_siret: "12322325500054",
-    },
+      invoicesId: [1,2],
+    }, 
     {
+      id: 2,
       nom: "Thomas Quilloux",
       email: "tquilloux@lagoon.fr",
       adresse: "13 chemin des Quilloux",
@@ -27,7 +31,8 @@ export class ClientsService {
       pays: "France",
       tel: "0763057817",
       siren_siret: "12322325566654",
-    },
+      invoicesId: [],
+    }
   ];
 
   isClient(client: Client): boolean {
@@ -39,12 +44,24 @@ export class ClientsService {
   }
 
   addNewClient(client: Client): void {
+    client.id = this.clients.reduce((acc, currentVal) => acc.id > currentVal.id ? acc : currentVal).id + 1; // recupere l'id max du tableau clients et ajoute 1
     this.clients.push(client);
+    console.log(client);
   }
 
-  getClientByName(nom: string): Client | null {
+  addInvoiceToClient(client: Client, invoice: Invoice) {
+    this.clients.find(c => c.id === client.id )?.invoicesId.push(invoice.id);
+  }
+
+  // Faut il retourner null ou undefined pour les methodes comme celles ci ?? : 
+
+  getClientByName(nom: string): Client | undefined {
     const client = this.clients.find((c) => c.nom === nom);
-    return client || null;
+    return client;
+  }
+
+  getClientById(id: number): Client | undefined {
+    return this.clients.find( client => client.id);
   }
 
   getClientFromSearch(
