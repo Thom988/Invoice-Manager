@@ -1,6 +1,7 @@
 import { Invoice } from "./invoice.model";
 
 export class Client {
+    id!: number;
     nom!: string;
     email!: string;
     adresse!: string;
@@ -9,9 +10,10 @@ export class Client {
     pays!: string;
     tel!: string;
     siren_siret!: string;
-    //invoices!: Invoice[];
+    invoicesId!: number[];
 
     constructor() {
+        this.id = 0;
         this.nom = '';
         this.email = '';
         this.adresse = '';
@@ -20,6 +22,6 @@ export class Client {
         this.pays = '';
         this.tel= '';
         this.siren_siret = '';
-        //this.invoices = [];
+        this.invoicesId = [];
     }
 }

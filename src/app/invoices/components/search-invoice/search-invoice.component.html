@@ -1,24 +1,29 @@
 <div class="search-pages">
   <div class="search-bar">
-    <form (ngSubmit)="onSubmitForm()">
+    <form [formGroup]="invoiceForm">
       <div class="form-group">
         <div class="form-item">
           <label for="numero">Numero</label>
-          <input
-            type="text"
-            name="numero"
-            [(ngModel)]="invoiceNumber"
-            [disabled]="isDatesVisible"
-          />
+          <input type="text" formControlName="invNumber" />
         </div>
         <div class="form-item">
           <label for="nomClient">Nom Client</label>
-          <input
-            type="text"
-            name="nomClient"
-            [(ngModel)]="clientName"
-            [disabled]="isDatesVisible"
-          />
+          <div>
+            <input
+              type="search"
+              formControlName="clientName"
+              autocomplete="off"
+              (focus)="onInputFocus()"
+            />
+            <div class="autocomplete-list" *ngIf="isInputNameFocused">
+              <div
+                *ngFor="let clientName of filteredClientsName"
+                (click)="onClientSelect(clientName)"
+              >
+                {{ clientName }}
+              </div>
+            </div>
+          </div>
         </div>
         <div class="form-item">
           <div class="checkbox">
@@ -37,18 +42,20 @@
           [ngStyle]="{ display: isDatesVisible ? 'flex' : 'none' }"
         >
           <label for="dateMin">Min</label>
-          <input type="date" name="dateMin" [(ngModel)]="issueDateMin" />
+          <input type="date" name="dateMin" formControlName="minDate" />
         </div>
         <div
           class="form-item"
           [ngStyle]="{ display: isDatesVisible ? 'flex' : 'none' }"
         >
           <label for="dateMax">Max</label>
-          <input type="date" name="dateMax" [(ngModel)]="issueDateMax" />
+          <input type="date" name="dateMax" formControlName="maxDate" />
         </div>
       </div>
-      <div class="search-button">
-        <button type="submit">Filtrer</button>
+      <div id="search-button">
+        <button type="submit" (click)="onInvoicestSearchFormSubmit()">
+          Filtrer
+        </button>
       </div>
     </form>
   </div>

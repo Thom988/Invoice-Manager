@@ -1,0 +1,35 @@
+<div class="search-pages">
+  <div class="search-bar">
+    <form [formGroup]="clientSearchForm">
+      <div class="form-group">
+        <div class="form-item">
+          <label for="nomClient">Nom</label>
+          <div>
+            <input type="search" name="nomClient" formControlName="nomClient" autocomplete="off" (focus)="onInputFocus()" />
+            <div class="autocomplete-list" *ngIf="isInputFocused">
+              <div *ngFor="let clientName of filteredClientsName" (click)="selectClient(clientName)">
+                {{ clientName }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-item">
+          <label for="emailClient">Email</label>
+          <input
+            type="text"
+            name="emailClient"
+            formControlName="emailClient"
+            [class.invalid-field]="isInputInvalid('emailClient')"
+          />
+        </div>
+        <div class="form-item"></div>
+      </div>
+      <div id="search-button">
+        <button type="submit" [disabled]="clientSearchForm.invalid" (click)="onClientSearchFormSubmit()">Filtrer</button>
+      </div>
+    </form>
+  </div>
+  <div class="Clients-list">
+    <app-client-card *ngIf="client" [client]="client"></app-client-card>
+  </div>
+</div>

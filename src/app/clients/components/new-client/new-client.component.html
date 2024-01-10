@@ -1,0 +1,51 @@
+<div class="client-form">
+  <h2>Nouveau Client</h2>
+  <form [formGroup]="clientForm">
+    <div class="client-form-group">
+      <div class="form-item">
+        <label for="nomClient">Nom<span>*</span></label>
+        <input type="text" formControlName="nomClient" [class.invalid-field]="isRequieredInputValid('nomClient')"/>
+      </div>
+      <div class="form-item">
+        <label for="email">Email</label>
+        <input type="text" formControlName="emailClient" [class.invalid-field]="isInputValid('emailClient')" />
+      </div>
+      <div class="form-item">
+        <label for="adresse">Adresse<span>*</span></label>
+        <input type="text" formControlName="adresseClient" [class.invalid-field]="isRequieredInputValid('adresseClient')"/>
+      </div>
+      <div class="form-item">
+        <label for="codePostal">CP<span>*</span></label>
+        <input type="text" formControlName="cpClient" [class.invalid-field]="isRequieredInputValid('cpClient')" />
+      </div>
+      <div class="form-item">
+        <label for="ville">Ville<span>*</span></label>
+        <input type="text" formControlName="villeClient" [class.invalid-field]="isRequieredInputValid('villeClient')"/>
+      </div>
+      <div class="form-item">
+        <label for="pays">Pays<span>*</span></label>
+        <input type="text" formControlName="paysClient" [class.invalid-field]="isRequieredInputValid('paysClient')"/>
+      </div>
+      <div class="form-item">
+        <label for="telephone">Telephone</label>
+        <input type="tel" formControlName="telClient" [class.invalid-field]="isInputValid('telClient')"/>
+      </div>
+      <div class="form-item">
+        <label for="siren_siret">SIRET<span>*</span></label>
+        <input type="text" formControlName="siren_siretClient" [class.invalid-field]="isRequieredInputValid('siren_siretClient')"/>
+      </div>
+    </div>
+  </form>
+  <div class="legend">
+    <p>* Champs obligatoires</p>
+  </div>
+  <div id="save-button">
+    <button
+      type="submit"
+      (click)="onClientFormSubmit()"
+      [disabled]="clientForm.invalid"
+    >
+      Enregistrer
+    </button>
+  </div>
+</div>

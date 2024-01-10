@@ -2,24 +2,22 @@ import { Injectable } from "@angular/core";
 import { InvoiceItem } from "../models/invoice-item.model";
 import { Invoice } from "../models/invoice.model";
 import { DateService } from "./date.service";
-@Injectable({ providedIn: "root" })
-export class InvoicesService {
-  constructor(private dateService: DateService) {}
+import { ClientsService } from "./clients.service";
+import { Client } from "../models/client.model";
 
+@Injectable({ providedIn: "root" })
+
+export class InvoicesService {
+
+  constructor(private dateService: DateService,
+    private clientsService: ClientsService) {}
+  
+  invoicesSearchList: Invoice[] = [];
   invoices: Invoice[] = [
-    {
+    { 
+      id: 1,
       numero: "202310-001",
-      numRM: "FR07787567888",
-      client: {
-        nom: "QUILLET Thomas",
-        email: "t.quillet@hotmail.fr",
-        adresse: "3 chemin des Poilus",
-        codePostal: 30400,
-        ville: "Villeneuve Les Avignon",
-        pays: "France",
-        tel: "0763007916",
-        siren_siret: "76567890",
-      },
+      idClient: 1,
       invoiceItems: [
         {
           nom: "changement robinet",
@@ -35,21 +33,11 @@ export class InvoicesService {
       dateEcheance: new Date(2023, 10, 30),
       totalHT: 100,
       total: 120,
-      id: 1,
     },
     {
+      id: 2,
       numero: "202310-002",
-      numRM: "FR07687567898",
-      client: {
-        nom: "QUILLET Laurent",
-        email: "mlquillet@mls.nc",
-        adresse: "26 rue bourgine Mont Coffyn",
-        codePostal: 98846,
-        ville: "Noumea",
-        pays: "France",
-        tel: "0763007916",
-        siren_siret: "076555890",
-      },
+      idClient: 1,
       invoiceItems: [
         {
           nom: "changement bac douche",
@@ -65,71 +53,28 @@ export class InvoicesService {
       dateEcheance: new Date(2023, 10, 30),
       totalHT: 2000,
       total: 2400,
-      id: 2,
     },
   ];
 
-  addNewInvoice(
-    clientForm: {
-      nomClient: string;
-      emailClient: string;
-      adresseClient: string;
-      cpClient: number;
-      villeClient: string;
-      paysClient: string;
-      telClient: string;
-      siren_siretClient: string;
-    },
-    detailsForm: {
-      dateEmission: string;
-      dateEcheance: string;
-    },
-    invoiceItems: InvoiceItem[]
-  ): void {
-    const numRM = "FR0044347940244";
-    let invoice: Invoice = new Invoice();
-    console.log("à l'enregistrement de l'objet : tva = " + typeof(invoiceItems[0].tva))
-    invoice = {
-      numero: this.getNewInvoiceNumber(),
-      numRM: numRM,
-      client: {
-        nom: clientForm.nomClient,
-        email: clientForm.emailClient,
-        adresse: clientForm.adresseClient,
-        codePostal: clientForm.cpClient,
-        ville: clientForm.villeClient,
-        pays: clientForm.paysClient,
-        tel: clientForm.telClient,
-        siren_siret: clientForm.siren_siretClient,
-      },
-      invoiceItems: invoiceItems,
-      dateEmission: this.dateService.toDateFormat(detailsForm.dateEmission),
-      dateEcheance: this.dateService.toDateFormat(detailsForm.dateEcheance),
-      totalHT: invoiceItems
-        .map((invItems) => invItems.total - invItems.mntTVA)
-        .reduce((acc, numb) => acc + numb, 0),
-      total: invoiceItems
-        .map((invItems) => invItems.total)
-        .reduce((acc, numb) => acc + numb, 0),
-      id: this.getNewInvoiceId(),
-    };
-    this.invoices.push(invoice);
-    console.log(this.invoices);
+  getInvoicesMaxId(): number {
+    return this.invoices.reduce( (acc, currVal) => acc.id > currVal.id ? acc : currVal).id;
   }
+
+  addNewInvoice(invoice: Invoice) {
+    this.invoices.push(invoice);
+    this.clientsService.addInvoiceToClient(invoice);
+  }
+
 
   getAllInvoices(): Invoice[] {
     return this.invoices;
   }
 
-  getInvoiceById(id: number): Invoice | null {
+  getInvoiceById(id: number): Invoice | undefined {
     let invoice = this.invoices.find((i) => i.id === id);
-    return invoice || null;
+    return invoice;
   }
 
-  getNewInvoiceId(): number {
-    let invoiceId = this.invoices.length + 1;
-    return invoiceId;
-  }
 
   getNewInvoiceNumber(): string {
     let currentDate: string = this.getFormatedCurrentDate();
@@ -153,39 +98,40 @@ export class InvoicesService {
     isDatesVisible: boolean,
     invoiceNumber: string,
     clientName: string,
-    issueDateMin: Date | null,
-    issueDateMax: Date | null
+    issueDateMin: Date,
+    issueDateMax: Date
   ): Invoice[] {
     let sortedInvoices: Invoice[];
+    const client = this.clientsService.getClientByName(clientName);
     if (!isDatesVisible) {
-      if (invoiceNumber === "" && clientName !== "") {
-        sortedInvoices = this.invoices.filter(
-          (inv) => inv.client.nom.toUpperCase() === clientName.toUpperCase()
-        );
+      if (invoiceNumber === "" && client) {
+          sortedInvoices = this.invoices.filter(
+            (inv) => client.id === inv.idClient
+          );
       } else if (invoiceNumber !== "" && clientName === "") {
         sortedInvoices = this.invoices.filter(
           (inv) => inv.numero === invoiceNumber
         );
-      } else if (invoiceNumber !== "" && clientName !== "") {
+      } else if (invoiceNumber !== "" && client) {
         sortedInvoices = this.invoices.filter(
           (inv) =>
             inv.numero === invoiceNumber &&
-            inv.client.nom.toUpperCase() === clientName.toUpperCase()
+            inv.idClient === client.id
         );
       } else {
         sortedInvoices = [];
       }
     } else if (isDatesVisible) {
-      if (issueDateMin !== null && issueDateMax !== null) {
+      if (issueDateMin && issueDateMax) {
         sortedInvoices = this.invoices.filter(
           (inv) =>
             inv.dateEmission >= issueDateMin && inv.dateEmission <= issueDateMax
         );
-      } else if (issueDateMin === null && issueDateMax !== null) {
+      } else if (!issueDateMin && issueDateMax) {
         sortedInvoices = this.invoices.filter(
           (inv) => inv.dateEmission <= issueDateMax
         );
-      } else if (issueDateMax === null && issueDateMin !== null) {
+      } else if (!issueDateMax && issueDateMin) {
         sortedInvoices = this.invoices.filter(
           (inv) => inv.dateEmission >= issueDateMin
         );
@@ -195,7 +141,9 @@ export class InvoicesService {
     } else {
       sortedInvoices = [];
     }
-    return sortedInvoices;
+    this.invoicesSearchList = sortedInvoices;
+    return this.invoicesSearchList;
   }
+
 
 }

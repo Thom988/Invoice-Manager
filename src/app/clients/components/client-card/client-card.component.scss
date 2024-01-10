@@ -1,0 +1,37 @@
+#client-card {
+    margin: 0 30px 30px 20px;
+    padding: 30px;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+    width: 400px;
+}
+
+#client-card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.form-item {
+    display: flex;
+    height: 30px;
+}
+
+.form-item label {
+   width: 130px;
+}
+
+.form-item label, h2, h3 {
+font-weight: bold;
+}
+
+h2, h3 {
+    margin: 30px 0;
+}
+
+#address-window {
+    display: flex;
+    flex-direction: column;
+}
+
