@@ -1,20 +1,34 @@
-.invoice-form {
+#invoice-form-window {
   padding: 20px;
   box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
   margin: 0 30px 30px 30px;
-  width: 700px;
+  width: 750px;
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-.client-form-group, .date-form-group {
+#invoice-page-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  transform: translateX(-40px);
+  margin-bottom: 40px;
+
+}
+
+.client-form-group,
+#date-form-group {
   display: flex;
   flex-direction: column;
   max-width: 400px;
+  margin-left: 30px;
+}
+
+#date-form-group {
+  width: 280px;
 }
 
 .client-form-group input {
   width: 220px;
-
 }
 
 .form-line {
@@ -30,9 +44,9 @@
   margin-top: 5px;
 }
 
-.form-item label {
-  margin-left: 40px;
-}
+// #date-form-group label {
+//   margin-left: 30px;
+// }
 
 .items-field {
   display: flex;
@@ -59,51 +73,148 @@
   margin-right: 30px;
 }
 
-.add-item-button {
+#add-client-button,
+#add-item-button {
   display: flex;
-  margin: 25px 0px;
+  margin: 30px 0px 20px 0;
 }
 
-.add-item-button h4 {
-  margin-right: 15px;
+#add-client-button h3,
+#add-item-button h3 {
+  margin-right: 20px;
 }
 
-.save-button {
-  margin: 30px 0 20px;
-}
-
-.add-item-button button {
+#add-client-button button,
+#add-item-button button {
   height: 30px;
   width: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #C4F5E1;
+  color: #c4f5e1;
   background-color: #004743c4;
   border-radius: 50%;
   border: 2px solid #0a9c95;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-size: x-large;
   font-weight: 800;
-  transition: background-color 0.6s ease, color 0.6s  ease;
+  transition: background-color 0.6s ease, color 0.6s ease;
 }
 
-.add-item-button button:hover {
+#add-client-button button:hover,
+#add-item-button button:hover {
   background-color: #0d9992cb;
   color: #effffe;
-  transition: background-color 0.1s ease, color 0.1s  ease;
-
+  transition: background-color 0.1s ease, color 0.1s ease;
 }
 
 .invalid-field {
-  border : 2px solid #AC4D39;
-  box-shadow: 0 0 5px #E54D2E;
+  border: 2px solid #ac4d39;
+  box-shadow: 0 0 5px #e54d2e;
 }
 
-label span, .legend {
-  color: #E54D2E;
+.legend {
+  margin: 20px 0;
+}
+
+label span,
+.legend {
+  color: #e54d2e;
 }
 
 .legend p {
   font-size: smaller;
+}
+
+#client-search-window {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 600px;
+  margin-bottom: 30px;
+}
+
+#client-search-item {
+  display: flex;
+  margin-left: 30px;
+}
+
+#client-search-item input:disabled {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#client-search-item label {
+  margin-right: 20px;
+}
+
+#save-button {
+  max-width: 650px;
+  margin: 80px 0 30px 0;
+  display: flex;
+  justify-content: center;
+}
+
+#client-form-buttons button,
+#save-button button {
+  color: #c4f5e1;
+  border-radius: 5px;
+  border: 2px solid #277f70;
+  align-items: center;
+  justify-content: center;
+  //background-color: #A8F5E5;
+  background-color: #004744;
+  padding: 5px 10px;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+}
+
+#client-form-buttons button:hover,
+#save-button button:hover {
+  background-color: #277f70;
+  transition: background-color 0.3s ease;
+}
+
+#save-button button:disabled,
+#client-form-buttons button:disabled {
+  color: rgba(0, 0, 0, 0.5);
+  border: none;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.client-chosen {
+  background-color: #c4f5e1;
+}
+
+#new-client-window {
+  margin: 30px;
+}
+
+#client-form-buttons button {
+  margin-right: 20px;
+}
+
+// ********************************** AUTOCOMPLETION NOM CLIENT : **********************************
+
+.autocomplete-list {
+  position: absolute;
+  // transform: translate(-2px,-3px);
+  background-color: #f7fffd;
+  width: 169px;
+  max-height: 200px;
+  white-space: nowrap; /* Empêche le texte de se retourner à la ligne */
+  overflow: hidden; /* Masque tout texte dépassant la largeur du conteneur */
+  text-overflow: ellipsis; /* Affiche une ellipse (...) à la fin du texte coupé */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Ajout d'une ombre légère */
+  overflow-y: auto; /* Ajout de la barre de défilement vertical si nécessaire */
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.autocomplete-list div {
+  font-family: "Times New Roman", Times, serif;
+  padding: 5px;
+}
+
+.autocomplete-list div:hover {
+  background-color: #008f8854;
 }

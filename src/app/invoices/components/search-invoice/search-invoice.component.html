@@ -10,7 +10,7 @@
           <label for="nomClient">Nom Client</label>
           <div>
             <input
-              type="text"
+              type="search"
               formControlName="clientName"
               autocomplete="off"
               (focus)="onInputFocus()"
@@ -52,7 +52,7 @@
           <input type="date" name="dateMax" formControlName="maxDate" />
         </div>
       </div>
-      <div class="search-button">
+      <div id="search-button">
         <button type="submit" (click)="onInvoicestSearchFormSubmit()">
           Filtrer
         </button>

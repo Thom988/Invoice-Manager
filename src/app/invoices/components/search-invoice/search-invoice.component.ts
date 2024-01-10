@@ -59,6 +59,17 @@ export class SearchInvoiceComponent implements OnInit {
   onCheckboxDate() {
     const currentDate: Date = new Date();
     this.isDatesVisible = !this.isDatesVisible;
+    const invNumberControl = this.invoiceForm.get("invNumber");
+    const clientName = this.invoiceForm.get('clientName');
+    if (this.isDatesVisible) {
+      clientName?.setValue('');
+      clientName?.disable();
+      invNumberControl?.setValue('');
+      invNumberControl?.disable();
+    } else {
+      clientName?.enable();
+      invNumberControl?.enable();
+    }
     this.invoiceForm.get("minDate")?.setValue(this.dateService.calculateFirstDayOfCurrentMonth(currentDate).toISOString().substring(0, 10));
     this.invoiceForm.get("maxDate")?.setValue(this.dateService.calculateLastDayOfCurrentMonth(currentDate).toISOString().substring(0, 10));
   }

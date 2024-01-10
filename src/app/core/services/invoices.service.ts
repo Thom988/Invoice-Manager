@@ -60,35 +60,11 @@ export class InvoicesService {
     return this.invoices.reduce( (acc, currVal) => acc.id > currVal.id ? acc : currVal).id;
   }
 
-  addNewInvoice(
-    client: Client,
-    detailsForm: {
-      dateEmission: string;
-      dateEcheance: string;
-    },
-    invoiceItems: InvoiceItem[]
-  ): void {
-    // const numRM = "FR0044347940244";
-    let invoice: Invoice = new Invoice();
-    // console.log("à l'enregistrement de l'objet : tva = " + typeof(invoiceItems[0].tva))
-    invoice = {
-      id: this.getInvoicesMaxId() + 1,
-      numero: this.getNewInvoiceNumber(),
-      idClient: client.id,
-      invoiceItems: invoiceItems,
-      dateEmission: this.dateService.toDateFormat(detailsForm.dateEmission),
-      dateEcheance: this.dateService.toDateFormat(detailsForm.dateEcheance),
-      totalHT: invoiceItems
-        .map((invItems) => invItems.total - invItems.mntTVA)
-        .reduce((acc, numb) => acc + numb, 0),
-      total: invoiceItems
-        .map((invItems) => invItems.total)
-        .reduce((acc, numb) => acc + numb, 0)
-    };
-    this.clientsService.addInvoiceToClient(client, invoice);
+  addNewInvoice(invoice: Invoice) {
     this.invoices.push(invoice);
-    console.log(invoice);
+    this.clientsService.addInvoiceToClient(invoice);
   }
+
 
   getAllInvoices(): Invoice[] {
     return this.invoices;
@@ -122,8 +98,8 @@ export class InvoicesService {
     isDatesVisible: boolean,
     invoiceNumber: string,
     clientName: string,
-    issueDateMin: Date | null,
-    issueDateMax: Date | null
+    issueDateMin: Date,
+    issueDateMax: Date
   ): Invoice[] {
     let sortedInvoices: Invoice[];
     const client = this.clientsService.getClientByName(clientName);
@@ -146,16 +122,16 @@ export class InvoicesService {
         sortedInvoices = [];
       }
     } else if (isDatesVisible) {
-      if (issueDateMin !== null && issueDateMax !== null) {
+      if (issueDateMin && issueDateMax) {
         sortedInvoices = this.invoices.filter(
           (inv) =>
             inv.dateEmission >= issueDateMin && inv.dateEmission <= issueDateMax
         );
-      } else if (issueDateMin === null && issueDateMax !== null) {
+      } else if (!issueDateMin && issueDateMax) {
         sortedInvoices = this.invoices.filter(
           (inv) => inv.dateEmission <= issueDateMax
         );
-      } else if (issueDateMax === null && issueDateMin !== null) {
+      } else if (!issueDateMax && issueDateMin) {
         sortedInvoices = this.invoices.filter(
           (inv) => inv.dateEmission >= issueDateMin
         );

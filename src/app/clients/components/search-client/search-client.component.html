@@ -5,7 +5,7 @@
         <div class="form-item">
           <label for="nomClient">Nom</label>
           <div>
-            <input type="text" name="nomClient" formControlName="nomClient" autocomplete="off" (focus)="onInputFocus()" />
+            <input type="search" name="nomClient" formControlName="nomClient" autocomplete="off" (focus)="onInputFocus()" />
             <div class="autocomplete-list" *ngIf="isInputFocused">
               <div *ngFor="let clientName of filteredClientsName" (click)="selectClient(clientName)">
                 {{ clientName }}
@@ -24,7 +24,7 @@
         </div>
         <div class="form-item"></div>
       </div>
-      <div class="search-button">
+      <div id="search-button">
         <button type="submit" [disabled]="clientSearchForm.invalid" (click)="onClientSearchFormSubmit()">Filtrer</button>
       </div>
     </form>

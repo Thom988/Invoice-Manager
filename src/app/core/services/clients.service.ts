@@ -43,14 +43,19 @@ export class ClientsService {
     return bool;
   }
 
-  addNewClient(client: Client): void {
+  addNewClient(client: Client): boolean {
+
     client.id = this.clients.reduce((acc, currentVal) => acc.id > currentVal.id ? acc : currentVal).id + 1; // recupere l'id max du tableau clients et ajoute 1
-    this.clients.push(client);
-    console.log(client);
+    if (!this.isClient(client)) {
+      this.clients.push(client);
+      return true;
+    } else {
+      return false;
+    }
   }
 
-  addInvoiceToClient(client: Client, invoice: Invoice) {
-    this.clients.find(c => c.id === client.id )?.invoicesId.push(invoice.id);
+  addInvoiceToClient(invoice: Invoice) {
+    this.clients.find(c => c.id === invoice.idClient )?.invoicesId.push(invoice.id);
   }
 
   // Faut il retourner null ou undefined pour les methodes comme celles ci ?? : 
@@ -61,7 +66,7 @@ export class ClientsService {
   }
 
   getClientById(id: number): Client | undefined {
-    return this.clients.find( client => client.id);
+    return this.clients.find( client => client.id === id);
   }
 
   getClientFromSearch(

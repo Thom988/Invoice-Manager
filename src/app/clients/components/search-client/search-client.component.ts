@@ -16,7 +16,7 @@ export class SearchClientComponent implements OnInit {
   clientSearchForm!: FormGroup;
   filteredClientsName!: string[];
   isInputFocused: boolean = false;
-  client!: Client | null;
+  client!: Client | undefined;
 
   constructor(
     private clientsService: ClientsService,
@@ -76,7 +76,7 @@ export class SearchClientComponent implements OnInit {
     if ( client != undefined) {
       this.client = client;
     } else {
-      this.client = null;
+      this.client = undefined;
     }
   } 
 

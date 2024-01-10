@@ -1,45 +1,120 @@
-<div class="invoice-form">
-  <h2>Nouvelle facture</h2>
-  <h3>Clients</h3>
-  <form [formGroup]="clientForm">
-    <div class="client-form-group">
-      <div class="form-item">
-        <label for="nomClient">Nom<span>*</span></label>
-        <input type="text" formControlName="nomClient" [class.invalid-field]="isRequieredInputInvalid('nomClient')"/>
-      </div>
-      <div class="form-item">
-        <label for="email">Email</label>
-        <input type="text" formControlName="emailClient" [class.invalid-field]="isInputInvalid('emailClient')" />
-      </div>
-      <div class="form-item">
-        <label for="adresse">Adresse<span>*</span></label>
-        <input type="text" formControlName="adresseClient" [class.invalid-field]="isRequieredInputInvalid('adresseClient')"/>
-      </div>
-      <div class="form-item">
-        <label for="codePostal">CP<span>*</span></label>
-        <input type="text" formControlName="cpClient" [class.invalid-field]="isRequieredInputInvalid('cpClient')" />
-      </div>
-      <div class="form-item">
-        <label for="ville">Ville<span>*</span></label>
-        <input type="text" formControlName="villeClient" [class.invalid-field]="isRequieredInputInvalid('villeClient')"/>
-      </div>
-      <div class="form-item">
-        <label for="pays">Pays<span>*</span></label>
-        <input type="text" formControlName="paysClient" [class.invalid-field]="isRequieredInputInvalid('paysClient')"/>
-      </div>
-      <div class="form-item">
-        <label for="telephone">Telephone</label>
-        <input type="tel" formControlName="telClient" [class.invalid-field]="isInputInvalid('telClient')"/>
-      </div>
-      <div class="form-item">
-        <label for="siren_siret">SIRET<span>*</span></label>
-        <input type="text" formControlName="siren_siretClient" [class.invalid-field]="isRequieredInputInvalid('siren_siretClient')"/>
+<div id="invoice-form-window">
+  <div id="invoice-page-header">
+    <h2>Nouvelle facture</h2>
+  </div>
+  <div id="add-client-button">
+    <h3>Client</h3>
+    <button (click)="onNewClient()">+</button>
+  </div>
+  <div id="client-search-window">
+    <div id="client-search-item">
+      <label for="clientName">Rechercher</label>
+      <div>
+        <input
+          type="search"
+          name="nomClient"
+          [formControl]="clientNameSearchControl"
+          autocomplete="off"
+          (focus)="onInputFocus()"
+          [ngClass]="{ 'client-chosen': isClientChosen }"
+        />
+        <div class="autocomplete-list" *ngIf="isInputFocused">
+          <div
+            *ngFor="let client of filteredClients"
+            (click)="onSelectClient(client)"
+          >
+            {{ client.nom }}
+          </div>
+        </div>
       </div>
     </div>
-  </form>
+  </div>
+  <div id="new-client-window" *ngIf="isClientFormDisplayed">
+    <form [formGroup]="clientForm">
+      <div class="client-form-group">
+        <div class="form-item">
+          <label for="nomClient">Nom<span>*</span></label>
+          <input
+            type="text"
+            formControlName="nomClient"
+            [class.invalid-field]="isRequieredInputInvalid('nomClient')"
+          />
+        </div>
+        <div class="form-item">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            formControlName="emailClient"
+            [class.invalid-field]="isInputInvalid('emailClient')"
+          />
+        </div>
+        <div class="form-item">
+          <label for="adresse">Adresse<span>*</span></label>
+          <input
+            type="text"
+            formControlName="adresseClient"
+            [class.invalid-field]="isRequieredInputInvalid('adresseClient')"
+          />
+        </div>
+        <div class="form-item">
+          <label for="codePostal">CP<span>*</span></label>
+          <input
+            type="text"
+            formControlName="cpClient"
+            [class.invalid-field]="isRequieredInputInvalid('cpClient')"
+          />
+        </div>
+        <div class="form-item">
+          <label for="ville">Ville<span>*</span></label>
+          <input
+            type="text"
+            formControlName="villeClient"
+            [class.invalid-field]="isRequieredInputInvalid('villeClient')"
+          />
+        </div>
+        <div class="form-item">
+          <label for="pays">Pays<span>*</span></label>
+          <input
+            type="text"
+            formControlName="paysClient"
+            [class.invalid-field]="isRequieredInputInvalid('paysClient')"
+          />
+        </div>
+        <div class="form-item">
+          <label for="telephone">Telephone</label>
+          <input
+            type="tel"
+            formControlName="telClient"
+            [class.invalid-field]="isInputInvalid('telClient')"
+          />
+        </div>
+        <div class="form-item">
+          <label for="siren_siret">SIRET<span>*</span></label>
+          <input
+            type="text"
+            formControlName="siren_siretClient"
+            [class.invalid-field]="isRequieredInputInvalid('siren_siretClient')"
+          />
+        </div>
+      </div>
+    </form>
+    <div class="legend">
+      <p>* Champs obligatoires</p>
+    </div>
+    <div id="client-form-buttons">
+      <button
+        type="submit"
+        (click)="onClientFormSubmit()"
+        [disabled]="clientForm.invalid"
+      >
+        Enregistrer client
+      </button>
+      <button type="button" (click)="onNewClientCanceled()">Annuler</button>
+    </div>
+  </div>
   <h3>Details facture</h3>
   <form [formGroup]="detailsForm">
-    <div class="date-form-group">
+    <div id="date-form-group">
       <div class="form-item">
         <label for="dateEmission">Date Emission</label>
         <input type="date" formControlName="dateEmission" />
@@ -50,34 +125,33 @@
       </div>
     </div>
   </form>
-  <div class="add-item-button">
-    <h4>Items</h4>
-    <button (click)="onAddItem()">+</button>
+  <div id="item-window">
+    <div id="add-item-button">
+      <h3>Items</h3>
+      <button (click)="onAddItem()">+</button>
+    </div>
+    <div class="items-field">
+      <div class="field-desc"><p>Description</p></div>
+      <div class="field-quant"><p>Qte</p></div>
+      <div class="field-price"><p>Prix</p></div>
+      <div class="field-tva"><p>TVA</p></div>
+      <div class="field-mnt-tva"><p>mnt TVA</p></div>
+      <div class="field-total"><p>Total</p></div>
+    </div>
+    <app-new-invoice-item
+      *ngFor="let itemElement of invoiceItems; let i = index"
+      [item]="itemElement"
+      (itemSaveEvent)="saveItemData($event)"
+      (itemDeleteEvent)="onDeleteItemForm($event)"
+    ></app-new-invoice-item>
   </div>
-  <div class="items-field">
-    <div class="field-desc"><p>Description</p></div>
-    <div class="field-quant"><p>Qte</p></div>
-    <div class="field-price"><p>Prix</p></div>
-    <div class="field-tva"><p>TVA</p></div>
-    <div class="field-mnt-tva"><p>mnt TVA</p></div>
-    <div class="field-total"><p>Total</p></div>
-  </div>
-  <app-new-invoice-item
-    *ngFor="let itemElement of invoiceItems; let i = index"
-    [item]="itemElement"
-    (itemSaveEvent)="saveItemData($event)"
-    (itemDeleteEvent)="onDeleteItemForm($event)"
-  ></app-new-invoice-item>
-  <div class="save-button">
+  <div id="save-button">
     <button
       type="submit"
       (click)="onInvoiceFormSubmit()"
-      [disabled]="clientForm.invalid"
+      [disabled]="!isClientChosen"
     >
       Enregistrer
     </button>
-  </div>
-  <div class="legend">
-    <p>* Champs obligatoires</p>
   </div>
 </div>

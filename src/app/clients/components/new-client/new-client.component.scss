@@ -1,41 +1,73 @@
 .client-form {
-    padding: 20px;
-    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
-    margin: 0 30px 30px 30px;
-    width: 700px;
-    background-color: rgba(255, 255, 255, 0.7);
-  }
+  padding: 20px;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+  margin: 0 30px 30px 30px;
+  width: 600px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
 
-  .client-form-group {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-  }
-  
-  .client-form-group input {
-    width: 220px;
-  }
+.client-form-group {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+}
 
-  .form-item {
-    flex: 1;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 5px;
-  }
-  
-  .form-item label {
-    margin-left: 40px;
-  }
+.client-form-group input {
+  width: 220px;
+}
 
-  .invalid-field {
-    border : 2px solid #AC4D39;
-    box-shadow: 0 0 5px #E54D2E;
-  }
-  
-  label span, .legend {
-    color: #E54D2E;
-  }
+.form-item {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
 
-  .save-button {
-    margin: 30px 0 20px;
-  }
+.form-item label {
+  margin-left: 40px;
+}
+
+.invalid-field {
+  border: 2px solid #ac4d39;
+  box-shadow: 0 0 5px #e54d2e;
+}
+
+label span,
+.legend {
+  color: #e54d2e;
+}
+
+.legend {
+  margin: 20px 0;
+}
+
+#save-button {
+  margin-top: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+
+#save-button button {
+  color: #c4f5e1;
+  border-radius: 5px;
+  border: 2px solid #277f70;
+  align-items: center;
+  justify-content: center;
+  background-color: #004744;
+  padding: 5px 10px;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+}
+
+#save-button button:hover {
+  background-color: #277f70;
+  transition: background-color 0.3s ease;
+}
+
+#save-button button:disabled {
+  color: rgba(0, 0, 0, 0.5);
+  border: none;
+  background-color: rgba(0, 0, 0, 0.05);
+}
