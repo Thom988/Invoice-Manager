@@ -1,9 +1,9 @@
 <div id="invoice-form-window">
   <div id="invoice-page-header">
-    <h2>Nouvelle facture</h2>
+    <h1>Nouvelle facture</h1>
   </div>
   <div id="add-client-button">
-    <h3>Client</h3>
+    <h2>Client</h2>
     <button (click)="onNewClient()">+</button>
   </div>
   <div id="client-search-window">
@@ -112,7 +112,7 @@
       <button type="button" (click)="onNewClientCanceled()">Annuler</button>
     </div>
   </div>
-  <h3>Details facture</h3>
+  <h2>Details</h2>
   <form [formGroup]="detailsForm">
     <div id="date-form-group">
       <div class="form-item">
