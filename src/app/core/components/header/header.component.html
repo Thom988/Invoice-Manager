@@ -5,13 +5,13 @@
       <nav>
         <ul>
           <li>
-            <button routerLink="">Accueil</button>
+            <button routerLink="" routerLinkActive="link-actived" [routerLinkActiveOptions]="{ exact: true }" >Accueil</button>
           </li>
           <li>
-            <button routerLink="invoices">Factures</button>
+            <button routerLink="invoices" routerLinkActive="link-actived">Factures</button>
           </li>
           <li>
-            <button routerLink="clients">Clients</button>
+            <button routerLink="clients" routerLinkActive="link-actived">Clients</button>
           </li>
         </ul>
       </nav>
