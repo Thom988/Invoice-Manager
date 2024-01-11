@@ -26,9 +26,10 @@
 
 .montants {
   display: flex;
-  background-color: #004744;
-  border: 2px solid #25bdb5;
-  color: #C4F5E1;
+  flex-direction: row;
+  color:  #611623;
+  background-color: #fdecef;
+  border: 2px solid #611623;
   justify-content: center;
   padding: 5px 5px 0 5px;
   font-size: 90%;
@@ -37,6 +38,10 @@
   height: 20px;
   border-radius: 5px;
   margin-right: 10px;
+}
+
+.montants p {
+  transform: translateY(-40%);
 }
 .prix {
   width: 75px;
@@ -54,17 +59,23 @@
 .delete-button button {
   height: 26px;
   width: 26px;
-  color: #E54D2E;
-  font-weight: 600;
-  // justify-content: center;
-  // align-items: center;
-  background-color: #ebaeb967;
-  border: 2px solid #ff635e;
+  color: #E5484D;
+  background-color: #fddbdb;
+  border: none;
   border-radius: 50%;
+  margin-left: 10px;
 }
 
 .delete-button button:hover {
-  background-color: rgba(252, 225, 225, 0.788);
-  border-color: #E54D2E;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  color:  #fff9f9;
+  background-color:  #E5484D;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.delete-button span {
+  // font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  position: absolute;
+  transform: translate(-50%, -58%) rotate(-1deg);
+  font-weight: 800;
+  font-size: large;
 }

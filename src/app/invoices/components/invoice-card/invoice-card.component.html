@@ -1,14 +1,24 @@
-<div class="invoice-card" (click)="onInvoiceDisplay()">
-  <div class="invoice-card-header">
+<div id="invoice-card">
+  <div id="invoice-card-header">
     <p>{{ invoice.numero }}</p>
   </div>
-  <p>{{ client?.nom }}</p>
-  <p>{{ client?.codePostal }} {{ client?.ville }}</p>
-  <p>{{ invoice.dateEmission | date : "dd/MM/yyyy" }}</p>
-  <div class="invoice-total">
+  <div id="invoice-card-body">
+    <label for="nom">Nom :</label>
+    <p>{{ client?.nom }}</p>
+    <label for="adresse">Adresse :</label>
+    <p>{{ client?.codePostal }} {{ client?.ville }}</p>
+    <label for="dateEmission">Emission :</label>
+    <p>{{ invoice.dateEmission | date : "dd/MM/yyyy" }}</p>
+    <label for="total">Total TTC :</label>
+    <p> {{ invoice.total | currency : "EUR" : "symbol" }} </p>
+  </div>
+  <!-- <div id="invoice-card-total">
     <label for="total">Total TTC</label>
-    <p style="font-weight: bolder">
+    <p>
       {{ invoice.total | currency : "EUR" : "symbol" }}
     </p>
+  </div> -->
+  <div id="invoice-display-button">
+    <button (click)="onInvoiceDisplay()">Afficher</button>
   </div>
 </div>

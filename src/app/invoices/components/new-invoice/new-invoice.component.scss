@@ -1,6 +1,6 @@
 #invoice-form-window {
   padding: 20px;
-  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
   margin: 0 30px 30px 30px;
   width: 750px;
   background-color: rgba(255, 255, 255, 0.7);
@@ -12,7 +12,6 @@
   justify-content: center;
   transform: translateX(-40px);
   margin-bottom: 40px;
-
 }
 
 .client-form-group,
@@ -20,11 +19,11 @@
   display: flex;
   flex-direction: column;
   max-width: 400px;
-  margin-left: 30px;
 }
 
 #date-form-group {
   width: 280px;
+  margin-left: 30px;
 }
 
 .client-form-group input {
@@ -44,9 +43,9 @@
   margin-top: 5px;
 }
 
-// #date-form-group label {
-//   margin-left: 30px;
-// }
+#item-window {
+  margin: 30px 0 0 30px;
+}
 
 .items-field {
   display: flex;
@@ -73,15 +72,24 @@
   margin-right: 30px;
 }
 
+h1, h2, h3 {
+  font-family: Comic Sans MS, Comic Sans, cursive;
+}
+
+h2,
+h3 {
+  margin-right: 20px;
+  margin-bottom: 50px;
+}
+
+h1, h2 {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
 #add-client-button,
 #add-item-button {
   display: flex;
-  margin: 30px 0px 20px 0;
-}
-
-#add-client-button h3,
-#add-item-button h3 {
-  margin-right: 20px;
 }
 
 #add-client-button button,
@@ -91,21 +99,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #c4f5e1;
-  background-color: #004743c4;
+  font-size: xx-large;
   border-radius: 50%;
-  border: 2px solid #0a9c95;
-  font-family: "Courier New", Courier, monospace;
-  font-size: x-large;
+  color: #277f70;
+  border: none;
+  background-color: #c4f5e1;
   font-weight: 800;
   transition: background-color 0.6s ease, color 0.6s ease;
+  position: relative;
+}
+
+#add-client-button span,
+#add-item-button span {
+  transform: translate(0%, -8%);
 }
 
 #add-client-button button:hover,
 #add-item-button button:hover {
-  background-color: #0d9992cb;
-  color: #effffe;
-  transition: background-color 0.1s ease, color 0.1s ease;
+  color: #c4f5e1;
+  background-color: #277f70;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .invalid-field {
@@ -161,11 +174,9 @@ label span,
   border: 2px solid #277f70;
   align-items: center;
   justify-content: center;
-  //background-color: #A8F5E5;
   background-color: #004744;
   padding: 5px 10px;
   text-align: center;
-  font-family: "Courier New", Courier, monospace;
 }
 
 #client-form-buttons button:hover,
@@ -197,7 +208,6 @@ label span,
 
 .autocomplete-list {
   position: absolute;
-  // transform: translate(-2px,-3px);
   background-color: #f7fffd;
   width: 169px;
   max-height: 200px;
@@ -211,7 +221,6 @@ label span,
 }
 
 .autocomplete-list div {
-  font-family: "Times New Roman", Times, serif;
   padding: 5px;
 }
 

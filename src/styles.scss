@@ -2,9 +2,9 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 * {
-    // font-family: Roboto, Helvetica, sans-serif;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Comic Sans MS, Comic Sans, cursive;
   }
+
 
   body {
     padding: 0;
@@ -13,7 +13,6 @@
   }
 
   input {
-    height: 23px;
     border: 2px solid rgba(12, 16, 74, 0.3);
     border-radius: 5px;
   }

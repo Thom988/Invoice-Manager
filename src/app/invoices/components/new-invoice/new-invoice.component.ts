@@ -87,18 +87,13 @@ export class NewInvoiceComponent implements OnInit {
         debounceTime(150) // comme anti-rebond en electronique, permet de ne pas envoyer de requête à chaque entré utilisateur.
       )
       .subscribe((nomClient) => {
-        this.isClientChosen = this.clientsService.getClientByName(nomClient)
-          ? true
-          : false;
+        this.isClientChosen = !this.clientsService.getClientByName(nomClient) ? false : this.isClientChosen ;
         if (nomClient.length < 1) {
           this.filteredClients = [];
-        } else {
-          if (!this.isClientChosen) {
-            this.filteredClients = this.clientsService.clients.filter(
-              (client) =>
-                client.nom.toLowerCase().includes(nomClient.toLowerCase())
-            );
-          }
+        } else if (!this.isClientChosen) {
+          this.filteredClients = this.clientsService.clients.filter((client) =>
+            client.nom.toLowerCase().includes(nomClient.toLowerCase())
+          );
         }
       });
   }
