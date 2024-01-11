@@ -23,23 +23,25 @@
 }
 
 #handle-buttons button {
+  height: 50px;
+  width: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
-  width: 40px;
-  height: 40px;
   border-radius: 50%;
-  font-weight: 600;
-  color: rgba(18, 25, 124, 0.832);
+  color: #277f70;
+  border: none;
   background-color: #c4f5e1;
-  border: 2px solid #277f70;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  font-weight: 800;
+  transition: background-color 0.6s ease, color 0.6s ease;
+  margin-bottom: 10px;
 }
 
+
 #handle-buttons button:hover {
-  background-color: #5ff8bbcb;
-  transition: background-color 0.1s ease;
+  color: #c4f5e1;
+  background-color: #277f70;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 #icon-dlPDF {
@@ -53,8 +55,7 @@
 }
 .invoice-header {
   border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
-  margin-bottom: 0px;
+  padding-bottom: 30px;
   text-align: center;
 }
 // .invoice-header:before {
@@ -72,43 +73,50 @@
 }
 .invoice-details {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   border-bottom: 1px solid #ddd;
   padding-bottom: 30px;
   margin: 0 30px 30px 30px;
 }
 
 #invoice-dates {
-  //display: flex;
+  display: flex;
   margin: 0px 30px;
-  // justify-content: space-between;
+  justify-content: space-evenly;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #ddd;
 }
 
 #invoice-dates div {
   display: flex;
-  width: 270px;
-  height: 30px;
-  align-items: center;
-  justify-content: space-between;
 }
 
 #invoice-dates label {
-  margin-right: 10px;
-  font-family: "Courier New", Courier, monospace;
   font-weight: 600;
+  margin-right: 10px;
 }
-
 
 h4,
 p,
-.item-table td {
+.item-table td, label {
   font-family: "Courier New", Courier, monospace;
+}
+
+h4 {
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset:6px;
+  margin-bottom: 30px;
+  
+}
+
+.item-table th {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .invoice-from,
 .invoice-to {
   margin-top: 40px;
-  //width: 48%;
 }
 .item-table {
   margin: 60px 0;
@@ -133,10 +141,8 @@ p,
   text-align: left;
   position: absolute;
   width: 794px;
-  bottom: 30px;
+  bottom: 70px;
   left: 30px;
-  //   font-weight: 400;
-  //   border-top: 1px solid #ddd;
 }
 
 #total-ht,
@@ -152,7 +158,7 @@ p,
   font-weight: 600;
 }
 
-.ligne {
+.dotted-line {
   width: 60%;
   padding-top: 8px;
   border-bottom: 1px dashed rgba(0, 0, 0, 0.3);

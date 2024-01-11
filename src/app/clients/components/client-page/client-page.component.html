@@ -1,19 +1,19 @@
 <div class="clients-page">
-    <div class="clients-handle">
-      <button
-        class="create-btn"
-        routerLink="create"
-        routerLinkActive="active-link"
-      >
-        Creer
-      </button>
-      <button
-        class="search-btn"
-        routerLink="search"
-        routerLinkActive="active-link"
-      >
-        Rechercher
-      </button>
-    </div>
-    <router-outlet></router-outlet>
+  <div class="clients-handle">
+    <button
+      id="search-btn"
+      routerLink="search"
+      routerLinkActive="active-link"
+    >
+      Rechercher
+    </button>
+    <button
+      id="create-btn"
+      routerLink="create"
+      routerLinkActive="active-link"
+    >
+      <span>+</span>
+    </button>
   </div>
+  <router-outlet></router-outlet>
+</div>

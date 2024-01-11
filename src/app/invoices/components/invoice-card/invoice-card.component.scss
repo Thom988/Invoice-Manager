@@ -21,15 +21,18 @@
 #invoice-card-body {
   display: grid;
 //   grid-template-columns: repeat(2, 1fr); // les deux colonnes sont égales en largeur et prennent la totalité du conteneur parent
-  grid-template-columns: 35% 65%;
+  grid-template-columns: 40% 60%;
   margin: 30px 0;
 }
 
 #invoice-card-body label {
-    text-decoration: underline;
-    text-underline-offset : 5px;
+    // text-decoration: underline;
+    // text-underline-offset : 2px;
     font-weight: 400;
-    font-family: Comic Sans MS, Comic Sans, cursive;
+}
+
+#invoice-card-body p {
+  font-family: 'Courier New', Courier, monospace;
 }
 
 #invoice-display-button {

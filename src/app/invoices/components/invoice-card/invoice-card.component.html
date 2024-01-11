@@ -3,13 +3,13 @@
     <p>{{ invoice.numero }}</p>
   </div>
   <div id="invoice-card-body">
-    <label for="nom">Nom</label>
+    <label for="nom">Nom :</label>
     <p>{{ client?.nom }}</p>
-    <label for="adresse">Adresse</label>
+    <label for="adresse">Adresse :</label>
     <p>{{ client?.codePostal }} {{ client?.ville }}</p>
-    <label for="dateEmission">Emission</label>
+    <label for="dateEmission">Emission :</label>
     <p>{{ invoice.dateEmission | date : "dd/MM/yyyy" }}</p>
-    <label for="total">Total TTC</label>
+    <label for="total">Total TTC :</label>
     <p> {{ invoice.total | currency : "EUR" : "symbol" }} </p>
   </div>
   <!-- <div id="invoice-card-total">

@@ -4,7 +4,9 @@
   </div>
   <div id="add-client-button">
     <h2>Client</h2>
-    <button (click)="onNewClient()">+</button>
+    <button (click)="onNewClient()">
+      <span>+</span>
+    </button>
   </div>
   <div id="client-search-window">
     <div id="client-search-item">
@@ -128,7 +130,7 @@
   <div id="item-window">
     <div id="add-item-button">
       <h3>Items</h3>
-      <button (click)="onAddItem()">+</button>
+      <button (click)="onAddItem()"><span>+</span></button>
     </div>
     <div class="items-field">
       <div class="field-desc"><p>Description</p></div>

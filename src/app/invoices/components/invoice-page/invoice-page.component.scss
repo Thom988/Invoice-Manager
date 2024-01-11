@@ -1,42 +1,55 @@
 .invoice-page {
-    display: flex;
-    flex-direction: column;
-  }
+  display: flex;
+  flex-direction: column;
+}
 
-  
-  .invoice-handle {
-    margin: 30px;
-    display: flex;
-    flex-direction: row;
-    max-width: 350px;
-  }
+.invoice-handle {
+  margin: 30px;
+  display: flex;
+  flex-direction: row;
+  max-width: 350px;
+}
 
-  button {
-    border: none;
-    height: 40px;
-    width: 100px;
-    font-weight: 700;
-    margin-right: 20px;
-    border-radius: 10px;
-    align-items: center;
-    color:  #611623;
-    background-color: #ebaeb967;
-  }
+button {
+  color: #611623;
+  background-color: #ebaeb967;
+  border: none;
+}
 
-  button:hover {
-    background-color: #611623;
-    color: #FFD1D9;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
+#create-btn {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: xx-large;
+  border-radius: 50%;
+  font-weight: 800;
+  transition: background-color 0.6s ease, color 0.6s ease;
+  position: relative;
+}
 
-  .active-link {
-    background-color: #611623;
-    color:#FFD1D9;
-    border: 2px solid #FF9592;
-  }
+#create-btn span {
+  transform: translate(0%, -8%);
+}
 
+#search-btn {
+  height: 40px;
+  width: 100px;
+  font-weight: 700;
+  margin-right: 20px;
+  border-radius: 10px;
+  align-items: center;
+}
 
-  
-  
+#search-btn:hover, #create-btn:hover {
+  background-color: #611623;
+  color: #ffd1d9;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-  
+.active-link {
+  background-color: #611623;
+  color: #ffd1d9;
+  // border: 2px solid #ff9592;
+}
